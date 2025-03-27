@@ -5,24 +5,32 @@ import React, {
   useState,
   useCallback,
   useMemo,
+  ReactNode,
 } from "react";
 
-const ThemeContext = createContext();
 
-// export const useTheme = () => useContext(ThemeContext);
+type ThemeContextProviderProps = {
+  children: ReactNode;
+};
 
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(
-    () => {
-      const getThemeLocalStorage = localStorage.getItem("theme");
-      if (getThemeLocalStorage !== "light" && getThemeLocalStorage !== "dark") {
-        return "light";
-      } else {
-        return getThemeLocalStorage;
-      }
-    }
-    // localStorage.getItem('theme') || 'light'
-  );
+type ThemeType =  "dark" | "light";
+// interface ThemeType =  "dark" | "light"
+
+type ThemeContextType = {
+  theme: ThemeType
+  toggleTheme: () => void; 
+  // setTheme: React.Dispatch<React.SetStateAction<string>>
+};
+
+
+
+const ThemeContext = createContext<ThemeContextType | null>(null);
+
+export const ThemeProvider = ({ children }: ThemeContextProviderProps) => {
+  const [theme, setTheme] = useState< ThemeType>(() => {
+    const getThemeLocalStorage = localStorage.getItem("theme");
+    return getThemeLocalStorage === "dark" ? "dark" : "light";
+  });
 
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
@@ -31,7 +39,7 @@ export const ThemeProvider = ({ children }) => {
 
   const toggleTheme = useCallback(() => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  });
+  }, []);
 
   const contextValue = useMemo(
     () => ({
@@ -51,9 +59,7 @@ export const ThemeProvider = ({ children }) => {
 export function useThemeContext() {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error(
-      "useThemeContext must be used withing a ThemeContextProvider"
-    );
+    throw new Error("useThemeContext must be used within a ThemeProvider");
   }
   return context;
 }
