@@ -1,0 +1,84 @@
+.jumpTopButtonSectionContainer {
+  text-align: center;
+  position: fixed;
+  bottom: 2vh;
+  right: 5vw;
+  /* p {
+        font-size: 16px;
+        color: var(--footer-text-color);
+    } */
+  .jumpTopButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--btn-color);
+    color: var(--btn-text-color);
+    border: none;
+    border-radius: 30px;
+    /* width: 45px;
+        height: 45px;
+        font-size: 25px; */
+    font-weight: bold;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+  }
+}
+
+.jumpTopButtonContainer {
+}
+
+@media (width < 400px) {
+  .jumpTopButtonSectionContainer {
+    bottom: 5vh;
+    right: 5px;
+  }
+
+  .jumpTopButton {
+    border-radius: 25px;
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+  }
+}
+
+@media (width >= 400px) {
+  .jumpTopButtonSectionContainer {
+    bottom: 5vh;
+    right: 5vw;
+  }
+
+  .jumpTopButton {
+    border-radius: 25px;
+    width: 45px;
+    height: 45px;
+    font-size: 25px;
+  }
+}
+
+@media (width >= 800px) {
+  .jumpTopButtonSectionContainer {
+    bottom: 5vh;
+    right: 5vw;
+  }
+
+  .jumpTopButton {
+    border-radius: 25px;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+  }
+}
+
+@media (width >= 1400px) {
+  .jumpTopButtonSectionContainer {
+    bottom: 5vh;
+    right: 5vw;
+  }
+
+  .jumpTopButton {
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    font-size: 45px;
+  }
+}
