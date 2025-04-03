@@ -1,4 +1,4 @@
-import React, {
+import {
   createContext,
   useContext,
   useEffect,
@@ -8,12 +8,13 @@ import React, {
   ReactNode,
 } from "react";
 
+import { ThemeType } from "@/entities/themeTypes.tsx"; // Adjust the import path
 
 type ThemeContextProviderProps = {
   children: ReactNode;
 };
 
-type ThemeType =  "dark" | "light";
+// type ThemeType =  "dark" | "light";
 // interface ThemeType =  "dark" | "light"
 
 type ThemeContextType = {

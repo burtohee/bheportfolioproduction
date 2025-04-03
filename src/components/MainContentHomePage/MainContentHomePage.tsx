@@ -11,7 +11,7 @@ import {
   linkedinLightSVGIcon,
   linkedinDarkSVGIcon,
   CVFile,
-} from "../../utils/ImageUtils";
+} from "../../utils/ImageUtils/index.tsx";
 
 // import {
 //   heroImageSmallAvif,
@@ -22,7 +22,7 @@ import {
 //   heroImageLargeWebp,
 // } from "../../utils/ImageUtilsForAVIFWEBP";
 
-import { useThemeContext } from "@/contexts/ThemeContext/ThemeContext";
+import { useThemeContext } from "@/contexts/ThemeContext/ThemeContext.tsx";
 import { motion as m } from "motion/react";
 import cn from "classnames";
 

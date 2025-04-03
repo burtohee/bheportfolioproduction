@@ -8,7 +8,37 @@ import {
 } from "../../utils/InputHomePageValidations/index";
 
 import { AnimatePresence, motion } from "framer-motion";
-// import { MdError } from "react-icons/md";
+
+import React from "react";
+
+interface BaseProps {
+  label?: string;
+  id?: string;
+  type?: string;
+  className?: string;
+  placeholder?: string;
+  autoComplete?: string; // Causes conflict
+  multiline?: boolean;
+  name?: string;
+  validation?: any;
+}
+
+// 🛠 Fix: Remove `autoComplete` from `BaseProps` when extending `InputProps`
+interface InputProps
+  extends Omit<BaseProps, "autoComplete">, // ✅ Remove conflicting prop
+    React.InputHTMLAttributes<HTMLInputElement> {
+  isTextArea?: false;
+  type?: React.HTMLInputTypeAttribute;
+}
+
+// 🛠 Fix: Remove `autoComplete` from `BaseProps` when extending `TextAreaProps`
+interface TextAreaProps
+  extends Omit<BaseProps, "autoComplete">,
+    React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  isTextArea: true;
+}
+
+type InputHomePageProps = InputProps | TextAreaProps;
 
 function InputHomePage({
   label,
@@ -19,9 +49,8 @@ function InputHomePage({
   autoComplete,
   multiline,
   name,
-
   validation,
-}) {
+}: InputHomePageProps) {
   const input_tailwind =
     "p-5 font-medium rounded-md w-full border border-slate-300 placeholder:opacity-60";
 
@@ -47,13 +76,13 @@ function InputHomePage({
           {multiline ? (
             <textarea
               id={id}
-              type={type}
+              // type={type}
               className={cn(
                 input_tailwind,
                 "min-h-[10rem] max-h-[20rem] resize-y"
               )}
               placeholder={placeholder}
-              {...register(name, validation)}
+              {...register(name || "", validation)}
             ></textarea>
           ) : (
             <input
@@ -62,7 +91,7 @@ function InputHomePage({
               className={cn(input_tailwind, "")}
               placeholder={placeholder}
               autoComplete={autoComplete}
-              {...register(name, validation)}
+              {...register(name || "", validation)}
             />
           )}
           <div className={cn(className, styles.errorMsgContainer)}>
@@ -83,7 +112,11 @@ function InputHomePage({
 
 export default InputHomePage;
 
-const InputError = ({ message }) => {
+interface InputErrorProps {
+  message: string;
+}
+
+const InputError = ({ message } : InputErrorProps) => {
   return (
     <motion.p
       className="flex items-center gap-1 px-2 font-semibold text-red-500 bg-red-100 rounded-md"

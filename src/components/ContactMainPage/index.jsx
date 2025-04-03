@@ -1,1 +1,1 @@
-export { default } from "./ContactMainPage";
+export { default } from "./ContactMainPage.jsx";

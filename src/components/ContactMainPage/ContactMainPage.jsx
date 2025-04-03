@@ -6,11 +6,11 @@ import {
   email_validation,
   name_validation,
   desc_validation,
-} from "@/utils/InputHomePageValidations/index";
+} from "@/utils/InputHomePageValidations";
 
 import { ReactLazyLoadImport } from "@/lazyloadings/ReactLazyLoadImport/index";
 const InputHomePage = ReactLazyLoadImport(() =>
-  import("@/commons/InputHomePage/index.jsx")
+  import("@/commons/InputHomePage")
 );
 
 function ContactMainPage() {
@@ -29,7 +29,7 @@ function ContactMainPage() {
     };
 
     const { submitForSpreeForm } = await import(
-      "@/routesapi/FormSpree/FormSpreeAPI"
+      "@/routesapi/FormSpree/index.tsx"
     );
     submitForSpreeForm(requestObj).then((r) => {
       if (r.response) {

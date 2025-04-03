@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 
 import { freshburgerPNG, viberrPNG } from "@/utils/ImageUtils";
 
-const ProjectCardHomePage = lazy(() => import("@/commons/ProjectCardHomePage"));
+const ProjectCardHomePage = lazy(() => import("@/commons/ProjectCardHomePage/index.tsx"));
 
 function ProjectsMainPage() {
   return (

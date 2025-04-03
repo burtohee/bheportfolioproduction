@@ -22,7 +22,8 @@ function JumpTopButton() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const jumpToTop = (e) => {
+  const jumpToTop = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.preventDefault();
     window.scroll({
       top: 0,
       behavior: "smooth",

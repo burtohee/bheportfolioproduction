@@ -1,7 +1,10 @@
 import { lazy } from "react";
 
 // Function that returns the resolved import dynamically
-export function ReactLazyLoadImport(pathFunction, namedExport) {
+export function ReactLazyLoadImport(
+  pathFunction: () => Promise<any>,  // pathFunction should return a Promise of any type (the module)
+  namedExport?: string              // namedExport is an optional string (since not all imports might use it)
+) {
   return lazy(() =>
     pathFunction().then((module) => {
       if (namedExport) {

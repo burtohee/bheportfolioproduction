@@ -1,15 +1,22 @@
+// src/components/SkillsMainPage/SkillsMainPage.tsx
 import styles from "@/components/SkillsMainPage/SkillsMainPageStyles.module.css";
 import { Suspense, useState, useEffect } from "react";
 import { useThemeContext } from "@/contexts/ThemeContext/ThemeContext";
-
 import { ReactLazyLoadImport } from "@/lazyloadings/ReactLazyLoadImport/index";
+import { ThemeType } from "@/entities/themeTypes.tsx"; // Adjust the import path
+
+// Lazy load the component and ensure the correct typing for props
 const SkillListHomePage = ReactLazyLoadImport(() =>
-  import("@/commons/SkillListHomePage/index.jsx")
-);
+  import("@/commons/SkillListHomePage/index.tsx")
+) as React.FC<{ src: string | HTMLImageElement | null; skill: string }>;;
 
-const imageCache = {};
+interface ImageCache {
+  [key: string]: string | HTMLImageElement;
+}
 
-const loadImage = async (theme) => {
+const imageCache: ImageCache = {};
+
+const loadImage = async (theme: ThemeType) => {
   if (imageCache[theme]) {
     return Promise.resolve(imageCache[theme]); // Ensure a Promise return
   }
@@ -30,7 +37,7 @@ const loadImage = async (theme) => {
 
 function SkillsMainPage() {
   const { theme } = useThemeContext();
-  const [checkMarkIcon, setCheckMarkIcon] = useState(null);
+  const [checkMarkIcon, setCheckMarkIcon] = useState<string | HTMLImageElement | null>(null);
 
   useEffect(() => {
     loadImage(theme).then(setCheckMarkIcon);

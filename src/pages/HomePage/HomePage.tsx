@@ -4,22 +4,22 @@ import { Suspense } from "react";
 import { ReactLazyLoadImport } from "@/lazyloadings/ReactLazyLoadImport/index";
 
 const MainContentHomePage = ReactLazyLoadImport(() =>
-  import("@/components/MainContentHomePage/index.jsx")
+  import("@/components/MainContentHomePage/index.tsx")
 );
 const ProjectsMainPage = ReactLazyLoadImport(() =>
-  import("@/components/ProjectsMainPage/index.jsx")
+  import("@/components/ProjectsMainPage/index.tsx")
 );
 const SkillsMainPage = ReactLazyLoadImport(() =>
-  import("@/components/SkillsMainPage/index.jsx")
+  import("@/components/SkillsMainPage/index.tsx")
 );
-const ContactMainPage = ReactLazyLoadImport(() =>
-  import("@/components/ContactMainPage/index.jsx")
-);
+// const ContactMainPage = ReactLazyLoadImport(() =>
+//   import("@/components/ContactMainPage/index.tsx")
+// );
 const FooterHomePage = ReactLazyLoadImport(() =>
-  import("@/components/FooterHomePage/index.jsx")
+  import("@/components/FooterHomePage/index.tsx")
 );
 const JumpTopButton = ReactLazyLoadImport(() =>
-  import("@/components/JumpTopButton/index.jsx")
+  import("@/components/JumpTopButton/index.tsx")
 );
 
 function HomePage() {
@@ -29,7 +29,7 @@ function HomePage() {
         <MainContentHomePage></MainContentHomePage>
         <ProjectsMainPage></ProjectsMainPage>
         <SkillsMainPage></SkillsMainPage>
-        <ContactMainPage></ContactMainPage>
+        {/* <ContactMainPage></ContactMainPage> */}
         <FooterHomePage></FooterHomePage>
         <JumpTopButton></JumpTopButton>
       </div>
