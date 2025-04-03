@@ -1,44 +1,23 @@
 import styles from "./InputHomePageStyles.module.css";
-
 import cn from "classnames";
 import { useFormContext } from "react-hook-form";
 import {
   findInputError,
   isFormInvalid,
 } from "../../utils/InputHomePageValidations/index";
-
 import { AnimatePresence, motion } from "framer-motion";
 
-import React from "react";
-
-interface BaseProps {
+interface InputHomePageProps {
   label?: string;
-  id?: string;
+  id: string;
   type?: string;
   className?: string;
   placeholder?: string;
-  autoComplete?: string; // Causes conflict
+  autoComplete?: string;
   multiline?: boolean;
-  name?: string;
-  validation?: any;
+  name: string;
+  validation?: Record<string, any>;
 }
-
-// 🛠 Fix: Remove `autoComplete` from `BaseProps` when extending `InputProps`
-interface InputProps
-  extends Omit<BaseProps, "autoComplete">, // ✅ Remove conflicting prop
-    React.InputHTMLAttributes<HTMLInputElement> {
-  isTextArea?: false;
-  type?: React.HTMLInputTypeAttribute;
-}
-
-// 🛠 Fix: Remove `autoComplete` from `BaseProps` when extending `TextAreaProps`
-interface TextAreaProps
-  extends Omit<BaseProps, "autoComplete">,
-    React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  isTextArea: true;
-}
-
-type InputHomePageProps = InputProps | TextAreaProps;
 
 function InputHomePage({
   label,
@@ -59,6 +38,7 @@ function InputHomePage({
     formState: { errors },
   } = useFormContext();
 
+  // Find the input error
   const inputError = findInputError(errors, name);
   const isInvalid = isFormInvalid(inputError);
 
@@ -76,11 +56,7 @@ function InputHomePage({
           {multiline ? (
             <textarea
               id={id}
-              // type={type}
-              className={cn(
-                input_tailwind,
-                "min-h-[10rem] max-h-[20rem] resize-y"
-              )}
+              className={cn(input_tailwind, "min-h-[10rem] max-h-[20rem] resize-y")}
               placeholder={placeholder}
               {...register(name || "", validation)}
             ></textarea>
@@ -96,7 +72,7 @@ function InputHomePage({
           )}
           <div className={cn(className, styles.errorMsgContainer)}>
             <AnimatePresence mode="wait" initial={false}>
-              {isInvalid && (
+              {isInvalid && inputError?.error?.message && (
                 <InputError
                   message={inputError.error.message}
                   key={`${name}+ input-errorMessage`}
@@ -116,13 +92,12 @@ interface InputErrorProps {
   message: string;
 }
 
-const InputError = ({ message } : InputErrorProps) => {
+const InputError = ({ message }: InputErrorProps) => {
   return (
     <motion.p
       className="flex items-center gap-1 px-2 font-semibold text-red-500 bg-red-100 rounded-md"
       {...framer_error}
     >
-      {/* <MdError /> */}
       <svg
         stroke="currentColor"
         fill="currentColor"

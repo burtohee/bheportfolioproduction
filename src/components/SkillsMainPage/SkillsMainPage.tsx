@@ -8,7 +8,7 @@ import { ThemeType } from "@/entities/themeTypes.tsx"; // Adjust the import path
 // Lazy load the component and ensure the correct typing for props
 const SkillListHomePage = ReactLazyLoadImport(() =>
   import("@/commons/SkillListHomePage/index.tsx")
-) as React.FC<{ src: string | HTMLImageElement | null; skill: string }>;;
+) as React.FC<{ src: string | HTMLImageElement | null; skill: string }>;
 
 interface ImageCache {
   [key: string]: string | HTMLImageElement;

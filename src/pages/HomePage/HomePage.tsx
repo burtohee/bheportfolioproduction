@@ -12,9 +12,9 @@ const ProjectsMainPage = ReactLazyLoadImport(() =>
 const SkillsMainPage = ReactLazyLoadImport(() =>
   import("@/components/SkillsMainPage/index.tsx")
 );
-// const ContactMainPage = ReactLazyLoadImport(() =>
-//   import("@/components/ContactMainPage/index.tsx")
-// );
+const ContactMainPage = ReactLazyLoadImport(() =>
+  import("@/components/ContactMainPage")
+);
 const FooterHomePage = ReactLazyLoadImport(() =>
   import("@/components/FooterHomePage/index.tsx")
 );
@@ -29,7 +29,7 @@ function HomePage() {
         <MainContentHomePage></MainContentHomePage>
         <ProjectsMainPage></ProjectsMainPage>
         <SkillsMainPage></SkillsMainPage>
-        {/* <ContactMainPage></ContactMainPage> */}
+        <ContactMainPage></ContactMainPage>
         <FooterHomePage></FooterHomePage>
         <JumpTopButton></JumpTopButton>
       </div>

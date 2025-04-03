@@ -10,13 +10,21 @@ import {
 
 import { ReactLazyLoadImport } from "@/lazyloadings/ReactLazyLoadImport/index";
 const InputHomePage = ReactLazyLoadImport(() =>
-  import("@/commons/InputHomePage")
-);
+  import("@/commons/InputHomePage/index.tsx")
+) as React.FC<{label?: string;
+  id: string;
+  type?: string;
+  className?: string;
+  placeholder?: string;
+  autoComplete?: string;
+  multiline?: boolean;
+  name: string;
+  validation?: Record<string, any> }>;
+
 
 function ContactMainPage() {
   const methods = useForm({ mode: "all" });
   const [success, setSuccess] = useState(false);
-
   const formSpreeFormAPI = import.meta.env.VITE_API_URL;
 
   const onSubmit = methods.handleSubmit(async (data) => {
@@ -31,7 +39,8 @@ function ContactMainPage() {
     const { submitForSpreeForm } = await import(
       "@/routesapi/FormSpree/index.tsx"
     );
-    submitForSpreeForm(requestObj).then((r) => {
+    submitForSpreeForm(requestObj).then((r: { response: any; }) => {
+
       if (r.response) {
         setSuccess(true);
 
@@ -61,8 +70,7 @@ function ContactMainPage() {
             <div className="formGroup">
               <InputHomePage {...desc_validation} />
             </div>
-
-            <button type="submit" onClick={onSubmit}>
+            <button type="submit" onClick={onSubmit} disabled={!(methods.formState.isDirty && (Object.keys(methods.formState.errors).length === 0))}>
               {/* <GrMail /> */}
               <svg
                 stroke="currentColor"
