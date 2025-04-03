@@ -1,0 +1,234 @@
+.pannel3DLoginPageContainer {
+    display: flex;
+    justify-content: end;
+    position: absolute;
+    right: 10px;
+    z-index: 99;
+}
+
+.controls3DModelContainer {
+    background-color: rgba(34, 34, 34, 0.8);
+    width: 280px;
+    border-radius: 8px;
+    margin: 10px;
+    position: sticky;
+    top: 10px;
+}
+.control3DModelHeaderContainer {
+    height: 39px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.control3DModelHeaderArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    user-select: none;
+    cursor: pointer;
+}
+.control3DModelHeaderArrow svg {
+    fill: #8c8c8c;
+}
+.control3DModelHeaderArrow:hover {
+    svg {
+        fill: #e6e6e6;
+    }
+}
+
+.control3DModelHeaderBurger {
+    touch-action: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0%;
+}
+
+.control3DModelHeaderBurger svg {
+    fill: #8c8c8c;
+}
+
+.control3DModelHeaderSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    user-select: none;
+    cursor: pointer;
+}
+
+/* .control3DModelValuesContainerCollapsed {
+
+    opacity: 0;
+    height: 0px;
+    overflow: hidden; 
+    transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out;
+} */
+
+.control3DModelValuesContainerExpanded {
+    /* margin: 5px; */
+    opacity: 1;
+    overflow: hidden;
+    /* background-color: rgba(34, 34, 34, 0.8); */
+    transition: height 1s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.control3DModelValueslongerSessionContainer {
+    /* display: flex; */
+    color: #eeeeee;
+    display: flex;
+    padding: 6px 10px 0;
+    margin-bottom: 10px;
+}
+
+.control3DModelValueslongerSessionLabelSVGContainer {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    width: 90px;
+}
+
+.control3DModelValueslongerSessionSvgContainer {
+    display: flex;
+    width: 13px;
+    margin-left: 10px;
+    opacity: 0;
+}
+
+.control3DModelValueslongerSessionLabelSVGContainer:hover {
+    .control3DModelValueslongerSessionSvgContainer {
+        opacity: 1;
+    }
+}
+
+.control3DModelValueslongerSessionInputBoxContainer {
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.control3DModelValueslongerSessionInputBoxInput {
+    outline: none;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    font-family: inherit;
+    border: none;
+    background-color: transparent;
+    appearance: none;
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+    margin: 0px;
+}
+
+.control3DModelValueslongerSessionInputBoxInput:checked
+    + label
+    .control3DModelValueslongerSessionInputBoxSvg {
+    display: block; /* Show when checkbox is checked */
+}
+
+.control3DModelValueslongerSessionInputBoxContainer label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    background-color: rgba(34, 32, 32, 0.8);
+    border-radius: 3px;
+}
+
+.control3DModelValueslongerSessionInputBoxContainer label > svg {
+    display: none;
+    width: 90%;
+    height: 90%;
+    stroke: #fefefe;
+}
+
+.control3DModelValuespasswordContainer {
+    /* display: flex; */
+    color: #eeeeee;
+    display: flex;
+    padding: 6px 10px 0;
+    margin-bottom: 10px;
+}
+
+.control3DModelValuespasswordLabelSVGContainer {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    width: 90px;
+}
+
+.control3DModelValuespasswordSvgContainer {
+    display: flex;
+    width: 13px;
+    margin-left: 10px;
+    opacity: 0;
+}
+
+.control3DModelValuespasswordLabelSVGContainer:hover {
+    .control3DModelValuespasswordSvgContainer {
+        opacity: 1;
+    }
+}
+
+.control3DModelValuespasswordInputBoxContainer {
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.control3DModelValuespasswordInputBoxInput {
+    outline: none;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    font-family: inherit;
+    border: none;
+    background-color: transparent;
+    appearance: none;
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+    margin: 0px;
+}
+
+.control3DModelValuespasswordInputBoxInput:checked
+    + label
+    .control3DModelValuespasswordInputBoxSvg {
+    display: block; /* Show when checkbox is checked */
+}
+
+.control3DModelValuespasswordInputBoxContainer label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    background-color: rgba(34, 32, 32, 0.8);
+    border-radius: 3px;
+}
+
+.control3DModelValuespasswordInputBoxContainer label > svg {
+    display: none;
+    width: 90%;
+    height: 90%;
+    stroke: #fefefe;
+}
+
+@media (width < 800px) {
+}
+
+@media (width >= 800px) {
+}
+
+@media (width >= 1400px) {
+}

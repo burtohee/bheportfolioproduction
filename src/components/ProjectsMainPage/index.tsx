@@ -1,1 +1,1 @@
-export { default } from "./ProjectsMainPage";
+export { default } from "@/components/ProjectsMainPage/ProjectsMainPage.tsx";

@@ -11,7 +11,7 @@ import {
   linkedinLightSVGIcon,
   linkedinDarkSVGIcon,
   CVFile,
-} from "../../utils/ImageUtils/index.tsx";
+} from "@/utils/ImageUtils/index.tsx";
 
 // import {
 //   heroImageSmallAvif,

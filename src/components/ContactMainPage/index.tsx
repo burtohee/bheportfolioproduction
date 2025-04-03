@@ -1,1 +1,1 @@
-export { default } from "./ContactMainPage.tsx";
+export { default } from "@/components/ContactMainPage/ContactMainPage.tsx";

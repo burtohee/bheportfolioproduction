@@ -1,6 +1,7 @@
 // import { Routes, Route, Navigate, Outlet, useLocation } from "react-router";
 import { Routes, Route, useLocation } from "react-router";
 import HomeRoute from "@/routes/HomeRoute.tsx";
+import LoginRoute from "@/routes/LoginRoute.tsx";
 
 // // Auth Check (Mock Authentication)
 // const isAuthenticated = false;
@@ -13,6 +14,7 @@ const AppRoutes = () => {
     <Routes location={location} key={location.pathname}>
       <Route path="/*" element={<div />} />
       {HomeRoute}
+      {LoginRoute}
     </Routes>
   );
 };

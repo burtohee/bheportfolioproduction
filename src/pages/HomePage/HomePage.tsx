@@ -1,8 +1,7 @@
-import styles from "@/pages/HomePage/HomePageStyles.module.css";
 import { Suspense } from "react";
+import styles from "@/pages/HomePage/HomePageStyles.module.css";
 
 import { ReactLazyLoadImport } from "@/lazyloadings/ReactLazyLoadImport/index";
-
 const MainContentHomePage = ReactLazyLoadImport(() =>
   import("@/components/MainContentHomePage/index.tsx")
 );
@@ -13,7 +12,7 @@ const SkillsMainPage = ReactLazyLoadImport(() =>
   import("@/components/SkillsMainPage/index.tsx")
 );
 const ContactMainPage = ReactLazyLoadImport(() =>
-  import("@/components/ContactMainPage")
+  import("@/components/ContactMainPage/index.tsx")
 );
 const FooterHomePage = ReactLazyLoadImport(() =>
   import("@/components/FooterHomePage/index.tsx")

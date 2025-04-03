@@ -70,7 +70,7 @@ function ContactMainPage() {
             <div className="formGroup">
               <InputHomePage {...desc_validation} />
             </div>
-            <button type="submit" onClick={onSubmit} disabled={!(methods.formState.isDirty && (Object.keys(methods.formState.errors).length === 0))}>
+            <button type="submit" onClick={onSubmit} disabled={!( methods.formState.isValid)}>
               {/* <GrMail /> */}
               <svg
                 stroke="currentColor"

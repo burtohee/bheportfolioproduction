@@ -1,1 +1,1 @@
-export { default } from "./JumpTopButton";
+export { default } from "@/components/JumpTopButton/JumpTopButton.tsx";
