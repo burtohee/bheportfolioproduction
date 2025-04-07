@@ -10,7 +10,7 @@ import {
 
 import { ThemeType } from "@/entities/themeTypes.tsx"; // Adjust the import path
 
-type ThemeContextProviderProps = {
+interface ThemeContextProviderProps {
   children: ReactNode;
 };
 
@@ -25,7 +25,7 @@ type ThemeContextType = {
 
 
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: ThemeContextProviderProps) => {
   const [theme, setTheme] = useState< ThemeType>(() => {

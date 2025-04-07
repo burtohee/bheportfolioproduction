@@ -2,6 +2,8 @@
 import { Routes, Route, useLocation } from "react-router";
 import HomeRoute from "@/routes/HomeRoute.tsx";
 import LoginRoute from "@/routes/LoginRoute.tsx";
+import PublicLayout from "@/layouts/PublicLayout/PublicLayout";
+import ProtectedRoute from "@/routes/ProtectedRoute";
 
 // // Auth Check (Mock Authentication)
 // const isAuthenticated = false;
@@ -12,9 +14,13 @@ const AppRoutes = () => {
   const location = useLocation();
   return (
     <Routes location={location} key={location.pathname}>
-      <Route path="/*" element={<div />} />
-      {HomeRoute}
-      {LoginRoute}
+      <Route element={<PublicLayout />}>
+        <Route path="/*" element={<div />} />
+        {LoginRoute}
+      </Route>
+      <Route element={<ProtectedRoute />}>
+        {HomeRoute}
+      </Route>
     </Routes>
   );
 };

@@ -1,16 +1,17 @@
 import '@/App.css';
-import { BrowserRouter } from 'react-router';
 import AppRoutes from '@/routes/AppRoutes.tsx';
 import { ThemeProvider } from '@/contexts/ThemeContext/ThemeContext.tsx';
-
+import { AuthenticationProvider } from '@/contexts/AuthenticationContext/AuthenticationContext.tsx';
 function App() {
     return (
         <>
-            <ThemeProvider>
-                <BrowserRouter>
-                    <AppRoutes />
-                </BrowserRouter>
-            </ThemeProvider>
+              <AuthenticationProvider>
+
+                <ThemeProvider>
+                        <AppRoutes />
+                </ThemeProvider>
+              </AuthenticationProvider>
+
         </>
     );
 }
