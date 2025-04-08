@@ -1,1 +1,1 @@
-export { default } from "./ReactLazyLoadImageInterSectionObs";
+export { default } from './ReactLazyLoadImageInterSectionObs';

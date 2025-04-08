@@ -71,7 +71,9 @@
     opacity: 1;
     overflow: hidden;
     /* background-color: rgba(34, 34, 34, 0.8); */
-    transition: height 1s ease-in-out, opacity 0.5s ease-in-out;
+    transition:
+        height 1s ease-in-out,
+        opacity 0.5s ease-in-out;
 }
 
 .control3DModelValueslongerSessionContainer {

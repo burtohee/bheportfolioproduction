@@ -1,1 +1,1 @@
-export { default } from "./SkillListHomePage.tsx";
+export { default } from './SkillListHomePage.tsx';

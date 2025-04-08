@@ -1,15 +1,13 @@
 import styles from './NavLinkStyles.module.css';
 
 import BHETLogo from '../../assets/originals/logos/BHETLogo.png';
-import { NavLinkValue } from "@/entities/NavLinkDataType";
-
-
+import { NavLinkValue } from '@/entities/NavLinkDataType';
 
 interface NavLinkPros {
-    data: NavLinkValue[]
+    data: NavLinkValue[];
 }
 
-const NavLink = ({ data } : NavLinkPros) => {
+const NavLink = ({ data }: NavLinkPros) => {
     return (
         <>
             <div className={styles.headerParentContainer}>
@@ -42,9 +40,7 @@ const NavLink = ({ data } : NavLinkPros) => {
                                     </li>
                                 )
                             )}
-                            
                         </ul>
-
                     </nav>
 
                     <div className={styles.headerButtonsContainer}>

@@ -1,42 +1,54 @@
-import { useState } from "react";
-import styles from "@/pages/LogInPage/LogInPageStyles.module.css";
+import { useState } from 'react';
+import styles from '@/pages/LogInPage/LogInPageStyles.module.css';
 
-import Pannel3DLoginPage from "@/components/Pannel3DLoginPage";
+import Pannel3DLoginPage from '@/components/Pannel3DLoginPage';
 import { Pannel3DLoginPageDataType } from '@/entities/Pannel3DLoginPageDataType';
 
-import { useAuthenticationContext } from "@/contexts/AuthenticationContext/AuthenticationContext";
-import { useNavigate } from "react-router";
+import { useAuthenticationContext } from '@/contexts/AuthenticationContext/AuthenticationContext';
+import { useNavigate } from 'react-router';
 function LogInPage() {
-  const [inputsChecked, setInputsChecked] = useState<Pannel3DLoginPageDataType>({
-    password: false,
-    longerSession: false,
-  });
+    const [inputsChecked, setInputsChecked] =
+        useState<Pannel3DLoginPageDataType>({
+            password: false,
+            longerSession: false,
+        });
 
-  const {login} = useAuthenticationContext()
-  const navigate = useNavigate();
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    const { login, logout } = useAuthenticationContext();
+    const navigate = useNavigate();
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
 
+        try {
+            await login();
+            navigate('/home');
+        } catch (err) {
+            // setError("Invalid email or password");
+        }
+    };
 
-    try {
-      await login();
-      navigate("/home");
-    } catch (err) {
-      // setError("Invalid email or password");
-    }
-  };
+    const handleSubmitLogOut = async (e: React.FormEvent) => {
+        e.preventDefault();
 
-  return (
-    <div className={styles.LogInPageContainer}>
-      <Pannel3DLoginPage
-        datas={inputsChecked}
-        datasSet={setInputsChecked}
-      ></Pannel3DLoginPage>
+        try {
+            await logout();
+            navigate('/home');
+        } catch (err) {
+            // setError("Invalid email or password");
+        }
+    };
 
-      <button onClick={handleSubmit}>login</button>
+    return (
+        <div className={styles.LogInPageContainer}>
+            <Pannel3DLoginPage
+                datas={inputsChecked}
+                datasSet={setInputsChecked}
+            ></Pannel3DLoginPage>
 
-    </div>
-  );
+            <button onClick={handleSubmit}>login</button>
+
+            <button onClick={handleSubmitLogOut}>logout</button>
+        </div>
+    );
 }
 
 export default LogInPage;

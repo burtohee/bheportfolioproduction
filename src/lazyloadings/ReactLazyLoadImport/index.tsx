@@ -1,1 +1,1 @@
-export { ReactLazyLoadImport } from "./ReactLazyLoadImport";
+export { ReactLazyLoadImport } from './ReactLazyLoadImport';

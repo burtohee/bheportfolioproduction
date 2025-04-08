@@ -1,11 +1,9 @@
 import { Outlet } from 'react-router';
 import styles from './PublicLayoutStyles.module.css';
 import NavLink from '@/commons/NavLink/index.tsx';
-import { NavLinkValue } from "@/entities/NavLinkDataType"; 
+import { NavLinkValue } from '@/entities/NavLinkDataType';
 
-
-type NavLinksValue  = NavLinkValue[]
-
+type NavLinksValue = NavLinkValue[];
 
 function PublicLayout() {
     const navLinks: NavLinksValue = [
@@ -16,7 +14,7 @@ function PublicLayout() {
 
     return (
         <>
-            <div className={styles.publicLayoutContainer}> 
+            <div className={styles.publicLayoutContainer}>
                 <NavLink data={navLinks} />
                 <Outlet />
             </div>

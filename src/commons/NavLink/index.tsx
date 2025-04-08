@@ -1,1 +1,1 @@
-export { default } from "./NavLink.tsx";
+export { default } from './NavLink.tsx';

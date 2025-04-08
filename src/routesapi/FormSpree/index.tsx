@@ -1,1 +1,1 @@
-export { submitForSpreeForm } from "./FormSpreeAPI";
+export { submitForSpreeForm } from './FormSpreeAPI';

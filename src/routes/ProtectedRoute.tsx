@@ -1,24 +1,14 @@
 import { Navigate, Outlet } from 'react-router';
 
 import { useAuthenticationContext } from '@/contexts/AuthenticationContext/AuthenticationContext.tsx';
-function ProtectedRoute(){
+function ProtectedRoute() {
+    const { token } = useAuthenticationContext();
 
-
-    const {token} = useAuthenticationContext();
-    console.log(token)
-    // return (   
-    //     <>
-    //         {isAuthenticated ? <Outlet /> : <Navigate to="/login" />}
-    //     </>
-    // )
     if (!token) {
         return <Navigate to="/login" replace />;
-      }
-    
-      return (
-          <Outlet/>
-    )
-        
+    }
+
+    return <Outlet />;
 }
 
-export default ProtectedRoute
+export default ProtectedRoute;

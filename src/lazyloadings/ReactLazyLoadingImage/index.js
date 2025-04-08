@@ -1,1 +1,1 @@
-export { default } from "./ReactLazyLoadingImage";
+export { default } from './ReactLazyLoadingImage';

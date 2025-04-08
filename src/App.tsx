@@ -5,13 +5,11 @@ import { AuthenticationProvider } from '@/contexts/AuthenticationContext/Authent
 function App() {
     return (
         <>
-              <AuthenticationProvider>
-
+            <AuthenticationProvider>
                 <ThemeProvider>
-                        <AppRoutes />
+                    <AppRoutes />
                 </ThemeProvider>
-              </AuthenticationProvider>
-
+            </AuthenticationProvider>
         </>
     );
 }

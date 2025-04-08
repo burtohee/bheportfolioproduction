@@ -1,1 +1,1 @@
-export { default } from "./InputHomePage.tsx";
+export { default } from './InputHomePage.tsx';

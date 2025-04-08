@@ -1,3 +1,5 @@
-export interface NavLinkValue  {
-    name: string, isEmpty: boolean, linkTo: string
+export interface NavLinkValue {
+    name: string;
+    isEmpty: boolean;
+    linkTo: string;
 }

@@ -1,1 +1,1 @@
-export { postRequest, apiClient, fetchData } from './apiRequests'
+export { postRequest, apiClient, fetchData } from './apiRequests';
