@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 import styles from '@/pages/LogInPage/LogInPageStyles.module.css';
 
 import { useAuthenticationContext } from '@/contexts/AuthenticationContext/AuthenticationContext';
@@ -39,12 +39,24 @@ function LogInPage() {
 
     const [inputsChecked, setInputsChecked] =
         useState<Pannel3DLoginPageDataType>({
-            password: { ifChecked: false, ifTitle: true },
-            longerSession: { ifChecked: false, ifTitle: true },
-            shortSession: { ifChecked: false, ifTitle: false },
+            password: {
+                ifChecked: false,
+                ifTitle: true,
+                relatedTo: [],
+            },
+            longerSession: {
+                ifChecked: false,
+                ifTitle: true,
+                relatedTo: ['shortSession'],
+            },
+            shortSession: {
+                ifChecked: false,
+                ifTitle: false,
+                relatedTo: ['longerSession'],
+            },
         });
 
-    const { login } = useAuthenticationContext();
+    const { login, token } = useAuthenticationContext();
     const navigate = useNavigate();
 
     const goLogIn = async () => {
@@ -58,6 +70,7 @@ function LogInPage() {
                     sessionType = 'short';
                 }
                 await login(sessionType);
+                // setIfLogIn(false);
                 navigate('/home');
             } catch (err) {
                 // setError("Invalid email or password");
@@ -66,7 +79,7 @@ function LogInPage() {
     };
 
     useEffect(() => {
-        console.log(ifLogIn);
+        // console.log(ifLogIn);
         goLogIn();
     }, [ifLogIn]);
 
@@ -90,30 +103,33 @@ function LogInPage() {
     //         // setError("Invalid email or password");
     //     }
     // };
+    if (token) {
+        return <Navigate to="/home" replace />;
+    } else
+        return (
+            <div className={styles.LogInPageContainer}>
+                <Pannel3DLoginPage
+                    datas={inputsChecked}
+                    datasSet={setInputsChecked}
+                ></Pannel3DLoginPage>
+                {!inputsChecked.password.ifChecked && (
+                    <ModelDigitalLock
+                        credential={credential}
+                        inputs={inputs}
+                        setInputs={setInputs}
+                        setIfLogIn={setIfLogIn}
+                    ></ModelDigitalLock>
+                )}
 
-    return (
-        <div className={styles.LogInPageContainer}>
-            <Pannel3DLoginPage
-                datas={inputsChecked}
-                datasSet={setInputsChecked}
-            ></Pannel3DLoginPage>
-
-            <ModelDigitalLock
-                credential={credential}
-                inputs={inputs}
-                setInputs={setInputs}
-                setIfLogIn={setIfLogIn}
-            ></ModelDigitalLock>
-
-            {inputsChecked.password.ifChecked && (
-                <ModelDigitalLockPasswordInput
-                    credential={credential}
-                    // password={inputs?.password}
-                    setPassword={handlePasswordChange}
-                ></ModelDigitalLockPasswordInput>
-            )}
-        </div>
-    );
+                {inputsChecked.password.ifChecked && (
+                    <ModelDigitalLockPasswordInput
+                        credential={credential}
+                        // password={inputs?.password}
+                        setPassword={handlePasswordChange}
+                    ></ModelDigitalLockPasswordInput>
+                )}
+            </div>
+        );
 }
 
 export default LogInPage;

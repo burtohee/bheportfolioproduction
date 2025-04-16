@@ -65,40 +65,42 @@ const ModelDigitalLock = (pros: ModelDigitalLockPros) => {
         pros.setInputs((values) => ({ ...values, password: value }));
     };
     useEffect(() => {
-        if (pros.inputs) {
-            if (
-                pros.inputs?.password.length === 4 &&
-                pros.inputs?.password === pros.credential
-            ) {
-                setIfGreen(true);
+        // if (pros.inputs) {
+        if (
+            pros.inputs?.password.length === 4 &&
+            pros.inputs?.password === pros.credential
+        ) {
+            setIfGreen(true);
+            setIfRed(false);
+            // pros.setInputs({ ...pros.inputs, password: '' });
+
+            timeoutRef.current = setTimeout(() => {
+                pros.setIfLogIn(true);
+            }, 800);
+        }
+        if (
+            (pros.inputs?.password.length === 4 &&
+                pros.inputs?.password !== pros.credential) ||
+            pros.inputs?.password.length > 4
+        ) {
+            setIfGreen(false);
+            setIfRed(true);
+            // pros.setInputs({ ...pros.inputs, password: '' });
+        }
+
+        //resetting
+        if (
+            pros.inputs?.password.length === 4 ||
+            pros.inputs?.password.length > 4
+        ) {
+            timeoutRef.current = setTimeout(() => {
+                // console.log(123);
+                setIfGreen(false);
                 setIfRed(false);
                 pros.setInputs({ ...pros.inputs, password: '' });
-
-                timeoutRef.current = setTimeout(() => {
-                    pros.setIfLogIn(true);
-                }, 800);
-            }
-            if (
-                (pros.inputs?.password.length === 4 &&
-                    pros.inputs?.password !== pros.credential) ||
-                pros.inputs?.password.length > 4
-            ) {
-                setIfGreen(false);
-                setIfRed(true);
-                pros.setInputs({ ...pros.inputs, password: '' });
-            }
-            //resetting
-            if (
-                pros.inputs?.password.length === 4 ||
-                pros.inputs?.password.length > 4
-            ) {
-                timeoutRef.current = setTimeout(() => {
-                    setIfGreen(false);
-                    setIfRed(false);
-                    pros.setInputs({ ...pros.inputs, password: '' });
-                }, 500);
-            }
+            }, 500);
         }
+        // }
 
         return () => {
             if (timeoutRef.current) {

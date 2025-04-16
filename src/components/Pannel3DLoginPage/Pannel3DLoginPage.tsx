@@ -13,17 +13,36 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
         setIfExpanded(!ifExpanded);
     };
 
-    // const [checkedItems, setCheckedItems] = useState(inputs);
+    const isDisabled = (key: KeyType): boolean => {
+        let result = Object.entries(datas).some(([_, otherVal]) => {
+            if (otherVal.relatedTo?.includes(key) && otherVal.ifChecked) {
+                return true;
+            }
+        });
+        return result;
+    };
+
+    // console.log(isDisabled);
 
     const handleCheckboxChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         const { id, checked } = event.target;
-        datasSet((prev) => ({
-            ...prev,
-            [id]: { ...[id], ifChecked: checked }, // Update only the changed checkbox
-        }));
+
+        datasSet((prev) => {
+            const key = id as keyof Pannel3DLoginPageDataType;
+
+            return {
+                ...prev,
+                [key]: {
+                    ...prev[key],
+                    ifChecked: checked,
+                },
+            };
+        });
     };
+
+    // console.log(datas);
 
     return (
         <>
@@ -68,8 +87,8 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
                                 <circle cx="26" cy="12" r="2"></circle>
                             </svg>
                         </div>
-                        <i className={styles.control3DModelHeaderSearch}>
-                            {/* <svg
+                        {/* <i className={styles.control3DModelHeaderSearch}>
+                            <svg
                                     width="12"
                                     height="8"
                                     viewBox="0 0 9 5"
@@ -80,8 +99,8 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
                                     }}
                                 >
                                     <path d="M3.8 4.4c.4.3 1 .3 1.4 0L8 1.7A1 1 0 007.4 0H1.6a1 1 0 00-.7 1.7l3 2.7z"></path>
-                                </svg> */}
-                        </i>
+                                </svg>
+                        </i> */}
                     </div>
 
                     <div
@@ -166,6 +185,9 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
                                                 false
                                             } // Retrieve checked state from checkedItems
                                             onChange={handleCheckboxChange}
+                                            disabled={isDisabled(
+                                                typedKey as KeyType
+                                            )}
                                         ></input>
                                         <label htmlFor={`${typedKey}`}>
                                             <svg

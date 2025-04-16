@@ -16,7 +16,6 @@ interface AuthenticationProviderPros {
     children: ReactNode;
 }
 
-// const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 const AuthenticationContext = createContext<AuthContextType | undefined>(
     undefined
 );
@@ -58,13 +57,20 @@ export const AuthenticationProvider = ({
             }, expirationTime);
 
             return () => clearTimeout(timeout); // cleanup
+        } else {
+            let expirationTime = 0;
+            expirationTime = 300000;
+            const timeout = setTimeout(() => {
+                logout();
+            }, expirationTime);
+
+            return () => clearTimeout(timeout); // cleanup
         }
-    }, [token]);
+    }, [token, ifLongSession]);
 
     // 🔁 Listen for token removal in other tabs
     useEffect(() => {
         const handleStorage = (event: StorageEvent) => {
-            // console.log(event);
             if (event.key === 'token' && !event.newValue) {
                 logout();
             }
@@ -103,12 +109,8 @@ export const AuthenticationProvider = ({
     };
 
     const logout = useCallback(() => {
-        // if(!token)
-        // {
         localStorage.removeItem('token');
         setToken(null);
-        // setUser(null);
-        // }
     }, []);
 
     const contextValue = useMemo(

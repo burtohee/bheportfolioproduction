@@ -72,7 +72,6 @@ function DigitalLock3D(props: DigitalLock3DPros) {
                 '#00ff00'
             );
         }
-
         if (props.ifRed) {
             changeIndicatorColor(
                 'KeypadDoorLockIndicatorRedMaterial',

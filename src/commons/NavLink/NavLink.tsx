@@ -19,11 +19,7 @@ const NavLink = ({ data }: NavLinkPros) => {
                             alt="Burto He"
                         ></img>
                     </div>
-                    {/* <div>
-                        {data.map((item, index) => (
-                            <p key={index}>{item}</p>
-                        ))}
-                    </div> */}
+
                     <nav className={styles.navLinkContainer}>
                         <ul className={styles.navLinks}>
                             {data.map((item) =>
