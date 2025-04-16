@@ -21,18 +21,14 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
         const { id, checked } = event.target;
         datasSet((prev) => ({
             ...prev,
-            [id]: checked, // Update only the changed checkbox
+            [id]: { ...[id], ifChecked: checked }, // Update only the changed checkbox
         }));
     };
 
     return (
         <>
             <div className={styles.pannel3DLoginPageContainer}>
-                {/* <h1>ModelDigitalLock</h1> */}
-
                 <div className={styles.controls3DModelContainer}>
-                    {/* <div className={styles.controlsDModel}>123</div> */}
-
                     <div className={styles.control3DModelHeaderContainer}>
                         <i
                             className={styles.control3DModelHeaderArrow}
@@ -89,17 +85,12 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
                     </div>
 
                     <div
-                        className={
-                            // ifExpanded
-                            //     ? styles.control3DModelValuesContainerExpanded
-                            //     : styles.control3DModelValuesContainerCollapsed
-                            styles.control3DModelValuesContainerExpanded
-                        }
+                        className={styles.control3DModelValuesContainer}
                         style={
                             ifExpanded
                                 ? {
                                       //   display: 'block',
-                                      height: '80px',
+                                      height: '120px',
                                   }
                                 : {
                                       //   display: 'none',
@@ -115,14 +106,14 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
                                     key={typedKey}
                                     className={
                                         styles[
-                                            `control3DModelValues${typedKey}Container`
-                                        ] || 'default-class'
+                                            `control3DModelValuesItemContainer`
+                                        ] || ''
                                     }
                                 >
                                     <div
                                         className={
                                             styles[
-                                                `control3DModelValues${typedKey}LabelSVGContainer`
+                                                `control3DModelValuesLabelSVGContainer`
                                             ]
                                         }
                                     >
@@ -130,9 +121,7 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
                                             htmlFor={`${typedKey}`}
                                             data-state="closed"
                                             className={
-                                                styles[
-                                                    `controls${typedKey}3DModelLabel`
-                                                ]
+                                                styles[`controls3DModelLabel`]
                                             }
                                         >
                                             {typedKey}
@@ -140,7 +129,7 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
                                         <div
                                             className={
                                                 styles[
-                                                    `control3DModelValues${typedKey}SvgContainer`
+                                                    `control3DModelValuesSvgContainer`
                                                 ]
                                             }
                                             title={`Click to show ${typedKey} helper`}
@@ -159,27 +148,30 @@ const Pannel3DLoginPage = ({ datas, datasSet }: Pannel3DLoginPagePros) => {
                                     <div
                                         className={
                                             styles[
-                                                `control3DModelValues${key}InputBoxContainer`
+                                                `control3DModelValuesInputBoxContainer`
                                             ]
                                         }
                                     >
                                         <input
                                             className={
                                                 styles[
-                                                    `control3DModelValues${key}InputBoxInput`
+                                                    `control3DModelValuesInputBoxInput`
                                                 ]
                                             }
                                             id={`${typedKey}`}
                                             name={`${typedKey}`}
                                             type="checkbox"
-                                            checked={datas[typedKey] || false} // Retrieve checked state from checkedItems
+                                            checked={
+                                                datas[typedKey].ifChecked ||
+                                                false
+                                            } // Retrieve checked state from checkedItems
                                             onChange={handleCheckboxChange}
                                         ></input>
                                         <label htmlFor={`${typedKey}`}>
                                             <svg
                                                 className={
                                                     styles[
-                                                        `control3DModelValues${typedKey}InputBoxSvg`
+                                                        `control3DModelValuesInputBoxSvg`
                                                     ]
                                                 }
                                                 xmlns="http://www.w3.org/2000/svg"

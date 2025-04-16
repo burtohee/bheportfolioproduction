@@ -4,6 +4,7 @@ import HomeRoute from '@/routes/HomeRoute.tsx';
 import LoginRoute from '@/routes/LoginRoute.tsx';
 import PublicLayout from '@/layouts/PublicLayout/PublicLayout';
 import ProtectedRoute from '@/routes/ProtectedRoute';
+// import ModelDigitalLock from '@/components/ModelDigitalLock';
 
 // // Auth Check (Mock Authentication)
 // const isAuthenticated = false;
@@ -17,6 +18,10 @@ const AppRoutes = () => {
             <Route element={<PublicLayout />}>
                 <Route path="/*" element={<div />} />
                 {LoginRoute}
+                {/* <Route
+                    path="/model2"
+                    element={<ModelDigitalLock></ModelDigitalLock>}
+                /> */}
             </Route>
             <Route element={<ProtectedRoute />}>{HomeRoute}</Route>
         </Routes>

@@ -26,6 +26,7 @@ export const AuthenticationProvider = ({
     const [token, setToken] = useState<string | null>(() => {
         return localStorage.getItem('token');
     });
+    const [ifLongSession, setIfLongSession] = useState<boolean>();
 
     // useEffect(() => {
     //   if (token) {
@@ -43,25 +44,27 @@ export const AuthenticationProvider = ({
     // }, [token]);
 
     useEffect(() => {
-        if (!token) return;
+        if (ifLongSession) {
+            if (!token) return;
 
-        let expirationTime = 0;
-        const decodedToken = jwtDecode(token);
-        console.log(decodedToken);
-        if (decodedToken.exp) {
-            expirationTime = decodedToken.exp * 1000 - Date.now(); // ms
+            let expirationTime = 0;
+            const decodedToken = jwtDecode(token);
+            // console.log(decodedToken);
+            if (decodedToken.exp) {
+                expirationTime = decodedToken.exp * 1000 - Date.now(); // ms
+            }
+            const timeout = setTimeout(() => {
+                logout();
+            }, expirationTime);
+
+            return () => clearTimeout(timeout); // cleanup
         }
-        const timeout = setTimeout(() => {
-            logout();
-        }, expirationTime);
-
-        return () => clearTimeout(timeout); // cleanup
     }, [token]);
 
     // 🔁 Listen for token removal in other tabs
     useEffect(() => {
         const handleStorage = (event: StorageEvent) => {
-            console.log(event);
+            // console.log(event);
             if (event.key === 'token' && !event.newValue) {
                 logout();
             }
@@ -71,7 +74,7 @@ export const AuthenticationProvider = ({
         return () => window.removeEventListener('storage', handleStorage);
     }, []);
 
-    const login = async () => {
+    const login = async (sessionType: 'long' | 'short') => {
         // const myuuid = uuidv4();
 
         // const res = await fetch("/api/login", {
@@ -83,10 +86,19 @@ export const AuthenticationProvider = ({
         // if (!res.ok) throw new Error("Login failed");
 
         // const data = await res.json();
+        if (sessionType === 'long') {
+            setIfLongSession(true);
 
-        const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE3NDQwODA1NTUsImV4cCI6MTc0NDA4MTc1NywiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.k4ShKMffBybmididgkRKwDMhAfiHT4Q6PLlG8Bx4yDg`;
-        setToken(token);
-        localStorage.setItem('token', token);
+            const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE3NDQ2NjU5MDQsImV4cCI6MTc3NjIwMTkwNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.2eoTts7vmGhqvZunOr2-9hYsJFmmiTOYrIx1Wil-T8c`;
+            setToken(token);
+            localStorage.setItem('token', token);
+        }
+        if (sessionType === 'short') {
+            setIfLongSession(false);
+            const token = '123';
+            setToken(token);
+            localStorage.setItem('token', token);
+        }
         // setUser(data.user); // Or fetch user profile separately
     };
 
@@ -102,6 +114,7 @@ export const AuthenticationProvider = ({
     const contextValue = useMemo(
         () => ({
             token,
+            ifLongSession,
             login,
             logout,
         }),

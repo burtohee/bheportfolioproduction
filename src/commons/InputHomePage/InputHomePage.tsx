@@ -7,17 +7,7 @@ import {
 } from '../../utils/InputHomePageValidations/index';
 import { AnimatePresence, motion } from 'framer-motion';
 
-interface InputHomePageProps {
-    label?: string;
-    id: string;
-    type?: string;
-    className?: string;
-    placeholder?: string;
-    autoComplete?: string;
-    multiline?: boolean;
-    name: string;
-    validation?: Record<string, any>;
-}
+import { InputHomePageProps } from '@/entities/InputHomePageProps';
 
 function InputHomePage({
     label,

@@ -8,20 +8,12 @@ import {
     desc_validation,
 } from '@/utils/InputHomePageValidations';
 
+import { InputHomePageProps } from '@/entities/InputHomePageProps';
+
 import { ReactLazyLoadImport } from '@/lazyloadings/ReactLazyLoadImport/index';
 const InputHomePage = ReactLazyLoadImport(
     () => import('@/commons/InputHomePage/index.tsx')
-) as React.FC<{
-    label?: string;
-    id: string;
-    type?: string;
-    className?: string;
-    placeholder?: string;
-    autoComplete?: string;
-    multiline?: boolean;
-    name: string;
-    validation?: Record<string, any>;
-}>;
+) as React.FC<InputHomePageProps>;
 
 function ContactMainPage() {
     const methods = useForm({ mode: 'all' });

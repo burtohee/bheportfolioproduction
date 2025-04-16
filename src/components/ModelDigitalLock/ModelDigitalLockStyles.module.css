@@ -1,0 +1,126 @@
+.ModelDigitalLockContentContainer {
+    width: 100%;
+    height: 100%;
+    /* border: 1px yellow solid; */
+}
+
+.ModelDigitalLockCanvasContainer {
+    width: 100%;
+    height: 90vh;
+    /* overflow: hidden; */
+    /* background-color: wheat; */
+    /* border: 1px red solid; */
+}
+.ModelDigitalLockCanvas {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--background--color);
+}
+
+.controls3DModelContainer {
+    /* background-color: #292d39; */
+    background-color: rgba(34, 34, 34, 0.8);
+    width: 280px;
+    border-radius: 5px;
+    position: sticky;
+    top: 10px;
+}
+.control3DModelHeaderContainer {
+    height: 39px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.control3DModelHeaderArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    user-select: none;
+    cursor: pointer;
+}
+.control3DModelHeaderArrow svg {
+    fill: #8c8c8c;
+}
+.control3DModelHeaderArrow:hover {
+    svg {
+        fill: #e6e6e6;
+    }
+}
+
+.control3DModelHeaderBurger {
+    touch-action: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0%;
+}
+
+.control3DModelHeaderBurger svg {
+    fill: #8c8c8c;
+}
+
+.control3DModelHeaderSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.control3DModelValuesContainerCollapsed {
+    /* margin: 5px; */
+    opacity: 0;
+    height: 0px;
+    overflow: hidden; /* Prevents content from being visible */
+    transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.control3DModelValuesContainerExpanded {
+    /* margin: 5px; */
+    opacity: 1;
+    height: 68px;
+    /* background-color: rgba(34, 34, 34, 0.8); */
+    transition: height 1s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.control3DModelValuesPasswordContainer {
+    padding-bottom: 0;
+    /* display: flex; */
+    color: white;
+    display: flex;
+
+    /* background-color: rgba(34, 34, 34, 0.8); */
+}
+
+.control3DModelValuesPasswordLabelSVGContainer {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px 0;
+    margin-bottom: 10px;
+}
+
+.control3DModelValuesPasswordSvgContainer {
+    display: flex;
+    width: 13px;
+    margin-left: 10px;
+    /* opacity: 0; */
+}
+
+.control3DModelValuesPasswordSvgContainer:hover {
+    /* width: 13px; */
+    opacity: 1;
+}
+
+@media (width < 800px) {
+}
+
+@media (width >= 800px) {
+}
+
+@media (width >= 1400px) {
+}

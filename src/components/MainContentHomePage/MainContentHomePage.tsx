@@ -34,7 +34,6 @@ import cn from 'classnames';
 // import heroImageLargeWebp from "../../../src/assets/images/large/hero-img.webp";
 
 function MainContentHomePage() {
-    console.log('rendering');
     const { theme, toggleTheme } = useThemeContext();
     //   const themeIcon = theme === "light" ? sunSVGIcon : moonSVGIcon;
     const twitterthemeIcon =

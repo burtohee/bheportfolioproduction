@@ -66,14 +66,14 @@
     transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out;
 } */
 
-.control3DModelValuesContainerExpanded {
+.control3DModelValuesContainer {
     /* margin: 5px; */
     opacity: 1;
     overflow: hidden;
     /* background-color: rgba(34, 34, 34, 0.8); */
     transition:
-        height 1s ease-in-out,
-        opacity 0.5s ease-in-out;
+        height 0.2s ease-in-out,
+        opacity 0.1s ease-in-out;
 }
 
 .control3DModelValueslongerSessionContainer {
@@ -104,12 +104,6 @@
     }
 }
 
-.control3DModelValueslongerSessionInputBoxContainer {
-    display: flex;
-    margin-left: 20px;
-    align-items: center;
-}
-
 .control3DModelValueslongerSessionInputBoxInput {
     outline: none;
     font-size: inherit;
@@ -131,6 +125,11 @@
     display: block; /* Show when checkbox is checked */
 }
 
+.control3DModelValueslongerSessionInputBoxContainer {
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+}
 .control3DModelValueslongerSessionInputBoxContainer label {
     position: relative;
     display: flex;
@@ -233,4 +232,78 @@
 }
 
 @media (width >= 1400px) {
+}
+
+.control3DModelValuesItemContainer {
+    /* display: flex; */
+    color: #eeeeee;
+    display: flex;
+    padding: 6px 10px 0;
+    margin-bottom: 10px;
+}
+
+.control3DModelValuesLabelSVGContainer {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    width: 150px;
+}
+
+.control3DModelValuesSvgContainer {
+    display: flex;
+    width: 13px;
+    margin-left: 10px;
+    opacity: 0;
+}
+
+.control3DModelValuesLabelSVGContainer:hover {
+    .control3DModelValuesSvgContainer {
+        opacity: 1;
+    }
+}
+
+.control3DModelValuesInputBoxContainer {
+    display: flex;
+    margin-left: 20px;
+    align-items: center;
+}
+.control3DModelValuesInputBoxContainer label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    background-color: rgba(34, 32, 32, 0.8);
+    border-radius: 3px;
+}
+
+.control3DModelValuesInputBoxContainer label > svg {
+    display: none;
+    width: 90%;
+    height: 90%;
+    stroke: #fefefe;
+}
+
+.control3DModelValuesInputBoxInput {
+    outline: none;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    font-family: inherit;
+    border: none;
+    background-color: transparent;
+    appearance: none;
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+    margin: 0px;
+}
+
+.control3DModelValuesInputBoxInput:checked
+    + label
+    .control3DModelValuesInputBoxSvg {
+    display: block; /* Show when checkbox is checked */
 }
