@@ -91,20 +91,32 @@ export const AuthenticationProvider = ({
 
         // if (!res.ok) throw new Error("Login failed");
 
-        // const data = await res.json();
-        if (sessionType === 'long') {
-            setIfLongSession(true);
+        const res = await fetch('http://localhost:5174/api/users/sign-in', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include', // important if you're setting cookies
+            body: JSON.stringify({ uuid: '123' }),
+        });
 
-            const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE3NDQ2NjU5MDQsImV4cCI6MTc3NjIwMTkwNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.2eoTts7vmGhqvZunOr2-9hYsJFmmiTOYrIx1Wil-T8c`;
-            setToken(token);
-            localStorage.setItem('token', token);
-        }
-        if (sessionType === 'short') {
-            setIfLongSession(false);
-            const token = '123';
-            setToken(token);
-            localStorage.setItem('token', token);
-        }
+        const data = await res.json();
+        console.log(data);
+
+        // // const data = await res.json();
+        // if (sessionType === 'long') {
+        //     setIfLongSession(true);
+
+        //     const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE3NDQ2NjU5MDQsImV4cCI6MTc3NjIwMTkwNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.2eoTts7vmGhqvZunOr2-9hYsJFmmiTOYrIx1Wil-T8c`;
+        //     setToken(token);
+        //     localStorage.setItem('token', token);
+        // }
+        // if (sessionType === 'short') {
+        //     setIfLongSession(false);
+        //     const token = '123';
+        //     setToken(token);
+        //     localStorage.setItem('token', token);
+        // }
         // setUser(data.user); // Or fetch user profile separately
     };
 
