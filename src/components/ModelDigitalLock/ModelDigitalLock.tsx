@@ -65,49 +65,6 @@ const ModelDigitalLock = (pros: ModelDigitalLockPros) => {
         pros.setInputs((values) => ({ ...values, password: value }));
     };
 
-    // const group = useRef();
-    // const { nodes, materials, scene, animations } = useGLTF(modelPath);
-    // const { actions, names } = useAnimations(animations, group);
-    // const mixer = useRef(null);
-    // const startTimeRef = useRef(null); // Store start time for elapsed time tracking
-    // const actionRef = useRef(null); // Action reference to control playback
-    // const [isPlaying, setIsPlaying] = useState(true); // Track animation state
-
-    // useEffect(() => {
-    //     if (!group.current || animations.length === 0) return;
-
-    //     mixer.current = new THREE.AnimationMixer(group.current);
-    //     const action = mixer.current.clipAction(animations[0]);
-    //     actionRef.current = action;
-    //     startTimeRef.current = performance.now();
-
-    //     action.play();
-
-    //     return () => {
-    //         mixer.current?.stopAllAction(); // Cleanup on unmount
-    //     };
-    // }, [animations]);
-
-    // useFrame(
-    //     (_, delta) => {
-    //         if (!isPlaying || !mixer.current || !startTimeRef.current) return; // Skip frame updates if paused
-
-    //         if (mixer.current && startTimeRef.current) {
-    //             // const elapsedTime =
-    //             //     (performance.now() - startTimeRef.current) / 1000; // Convert ms to seconds
-    //             const elapsedTime = performance.now() - startTimeRef.current;
-    //             // console.log(elapsedTime);
-    //             if (elapsedTime >= props.playDuration) {
-    //                 // actionRef.current.stop();
-    //                 actionRef.current.paused = true;
-    //                 setIsPlaying(false);
-    //             }
-    //             mixer.current?.update(delta); // Update animation on each frame
-    //         }
-    //     },
-    //     [actions, names, props.playDuration]
-    // );
-
     useEffect(() => {
         // if (pros.inputs) {
         if (
