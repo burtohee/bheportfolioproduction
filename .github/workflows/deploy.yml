@@ -41,7 +41,10 @@ jobs:
                   host: ${{ secrets.VPS_HOST }}
                   username: ${{ secrets.VPS_USER }}
                   key: ${{ secrets.VPS_SSH_KEY }}
-                  source: 'dist/*'
+                  # // dist/* will miss nested folders and dotfiles
+                  # source: 'dist/*'
+                  source: 'dist/**'
+                  # dist/** matches everything inside dist/ It will not copy the dist/ folder itself—only its contents.
                   target: '/var/www/html'
 
             - name: Reload Nginx (optional)
