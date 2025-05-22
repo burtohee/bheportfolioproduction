@@ -1,0 +1,22 @@
+name: Test SSH Access to VPS
+
+on:
+    push:
+        branches: [main] # or your branch name
+
+jobs:
+    test-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Test SSH to VPS
+              uses: appleboy/ssh-action@v0.1.8
+              with:
+                  host: ${{ secrets.VPS_HOST }}
+                  username: ${{ secrets.VPS_USER }}
+                  key: ${{ secrets.VPS_SSH_KEY }}
+                  script: |
+                      echo "🚀 Deployed from GitHub at $(date)" > ~/test-deploy.txt
