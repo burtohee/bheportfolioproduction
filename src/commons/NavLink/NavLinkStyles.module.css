@@ -1,155 +1,187 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-.headerParentContainer {
-    li,
-    a,
-    button {
-        font-family: 'Montserrat';
-        color: var(--btn-text-color);
-    }
+.NavLinkheaderParentContainer {
+  li,
+  a,
+  button {
+    font-family: "Montserrat";
+    color: var(--btn-text-color);
+  }
 }
 
-.headerParentContainer {
-    background-color: var(--header-background-color);
+.NavLinkheaderParentContainer {
+  background-color: var(--header-background-color);
 }
+
+.NavLinkheaderParentContainer {
+  .brandImageAtag {
+    text-decoration: none;
+  }
+  .brandImage {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 .headerContainer {
-    /* background-color: orange; */
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .headerBrandContainer {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    /* background-color: red; */
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 .brandImage {
-    width: 50px;
+  width: 50px;
 }
 
 .navLinkContainer {
-    /* background-color: yellow; */
 }
 
 .navLinks {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 
-    li {
-        display: inline-block;
-        padding: 0px 20px;
-    }
-    .navLinksEmpty {
-        padding: 0px;
-    }
-    li a {
-        transition: all 0.3s ease 0s;
-    }
+  li {
+    display: inline-block;
+    padding: 0px 20px;
+  }
+  .navLinksEmpty {
+    padding: 0px;
+  }
+  .navLinksEmptyAtag {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: auto;
+  }
 
-    li a:hover {
-        color: #0088a9;
-    }
+  .navLinksDisabled {
+    pointer-events: none;
+    color: gray;
+    opacity: 0.6;
+    text-decoration: none;
+  }
+
+  .navLinksDisabled {
+    color: gray;
+  }
+
+  .navLinksLi {
+    color: #000;
+  }
+  .navLinksA {
+    transition: all 0.3s ease 0s;
+  }
+
+  .navLinksA:hover {
+    color: #0088a9;
+  }
 }
 
 .headerButtonsContainer {
-    /* background-color: rgb(43, 255, 0); */
+  /* background-color: rgb(43, 255, 0); */
 
-    button {
-        background-color: var(--btn-color);
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        transition: all 0.3s ease 0s;
-    }
+  button {
+    background-color: var(--btn-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
 
-    button:hover {
-        background-color: var(--btn-hover-color);
-    }
+  button:hover {
+    background-color: var(--btn-hover-color);
+  }
 }
 
 @media (width < 800px) {
-    .headerContainer {
-        justify-content: flex-end;
-        margin: 0 5px;
-    }
+  .headerContainer {
+    justify-content: flex-end;
+    margin: 0 5px;
+  }
 
-    .headerBrandContainer {
-        margin-left: auto;
-        margin-right: 5px;
+  .headerBrandContainer {
+    margin-left: auto;
+    margin-right: 5px;
 
-        order: 3;
-    }
+    order: 3;
+  }
 
-    .headerButtonsContainer {
-        order: 2;
-        margin: 0 10px;
-    }
+  .headerButtonsContainer {
+    order: 2;
+    margin: 0 10px;
+  }
 
-    .navLinkContainer {
-        /* background-color: yellow; */
-        order: 1;
+  .navLinkContainer {
+    /* background-color: yellow; */
+    order: 1;
+  }
+  .navLinks {
+    li:nth-child(1) {
+      padding: 0px 20px 0 0;
     }
-    .navLinks {
-        li:nth-child(1) {
-            padding: 0px 20px 0 0;
-        }
+  }
+  .NavLinkheaderParentContainer {
+    li,
+    a,
+    button {
+      font-weight: 500;
+      font-size: 16px;
     }
-    .headerParentContainer {
-        li,
-        a,
-        button {
-            font-weight: 500;
-            font-size: 16px;
-        }
-    }
+  }
 }
 
 @media (width >= 800px) {
-    .headerContainer {
-        justify-content: flex-end;
-        margin: 0 50px;
-    }
+  .headerContainer {
+    justify-content: flex-end;
+    margin: 0 50px;
+  }
 
-    .headerBrandContainer {
-        margin-right: auto;
-        margin-left: 20px;
-    }
+  .headerBrandContainer {
+    margin-right: auto;
+    margin-left: 20px;
+  }
 
-    .headerButtonsContainer {
-        margin: 0 10px;
+  .headerButtonsContainer {
+    margin: 0 10px;
+  }
+  .NavLinkheaderParentContainer {
+    li,
+    a,
+    button {
+      font-weight: 500;
+      font-size: 17px;
     }
-    .headerParentContainer {
-        li,
-        a,
-        button {
-            font-weight: 500;
-            font-size: 17px;
-        }
-    }
+  }
 }
 
 @media (width >= 1400px) {
-    .headerContainer {
-        justify-content: space-between;
-        margin: 0 50px;
-    }
+  .headerContainer {
+    justify-content: space-between;
+    margin: 0 50px;
+  }
 
-    .headerBrandContainer {
-        margin-left: 0;
-        margin-right: 0;
-    }
+  .headerBrandContainer {
+    margin-left: 0;
+    margin-right: 0;
+  }
 
-    .headerButtonsContainer {
-        margin: 0 10px;
+  .headerButtonsContainer {
+    margin: 0 10px;
+  }
+  .NavLinkheaderParentContainer {
+    li,
+    a,
+    button {
+      font-weight: 500;
+      font-size: 18px;
     }
-    .headerParentContainer {
-        li,
-        a,
-        button {
-            font-weight: 500;
-            font-size: 18px;
-        }
-    }
+  }
 }

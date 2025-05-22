@@ -5,7 +5,7 @@ import { Color, Mesh, MeshBasicMaterial, MeshStandardMaterial } from 'three';
 
 import { ThreeEvent } from '@react-three/fiber';
 
-const modelPath = '/src/assets/models/untitledv6.glb';
+const modelPath = './models/untitledv6.glb';
 
 import { DigitalLock3DPros } from '@/entities/DigitalLock3DPros';
 function DigitalLock3D(props: DigitalLock3DPros) {

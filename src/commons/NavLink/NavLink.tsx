@@ -1,7 +1,7 @@
 import styles from './NavLinkStyles.module.css';
 
-import BHETLogo from '../../assets/originals/logos/BHETLogo.png';
-import { NavLinkValue } from '@/entities/NavLinkDataType';
+import BHETLogo from '@/assets/originals/logos/BHETLogo.png';
+import { NavLinkValue } from '@/entities/Layout/NavLinkDataType';
 
 interface NavLinkPros {
     data: NavLinkValue[];
@@ -10,29 +10,44 @@ interface NavLinkPros {
 const NavLink = ({ data }: NavLinkPros) => {
     return (
         <>
-            <div className={styles.headerParentContainer}>
+            <div className={styles.NavLinkheaderParentContainer}>
                 <header className={styles.headerContainer}>
                     <div className={styles.headerBrandContainer}>
-                        <img
-                            className={styles.brandImage}
-                            src={BHETLogo}
-                            alt="Burto He"
-                        ></img>
+                        <a href="/" className={styles.brandImageAtag}>
+                            <img
+                                className={styles.brandImage}
+                                src={BHETLogo}
+                                alt="Burto He"
+                            ></img>
+                        </a>
                     </div>
 
                     <nav className={styles.navLinkContainer}>
                         <ul className={styles.navLinks}>
                             {data.map((item) =>
                                 item.isEmpty === false ? (
-                                    <li key={'li' + item.name}>
-                                        <a href={item.linkTo}>{item.name}</a>
+                                    <li
+                                        key={'li' + item.name}
+                                        className={styles.navLinksLi}
+                                    >
+                                        <a
+                                            href={item.linkTo}
+                                            className={styles.navLinksA}
+                                        >
+                                            {item.name}
+                                        </a>
                                     </li>
                                 ) : (
                                     <li
                                         key={'li' + item.name}
                                         className={styles.navLinksEmpty}
                                     >
-                                        <a href={item.linkTo}>{item.name}</a>
+                                        <a
+                                            href={item.linkTo}
+                                            className={`${styles.navLinksDisabled} ${styles.navLinksEmptyAtag} ${styles.navLinksA}`}
+                                        >
+                                            {item.name}
+                                        </a>
                                     </li>
                                 )
                             )}
