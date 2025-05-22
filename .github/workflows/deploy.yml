@@ -46,6 +46,7 @@ jobs:
                   source: 'dist/.'
                   # 'dist/.' tells SCP to upload everything inside the dist folder (including dotfiles, nested folders, etc.) but not the dist directory itself.
                   target: '/var/www/html'
+                  strip_components: 1
 
             - name: Reload Nginx (optional)
               uses: appleboy/ssh-action@v0.1.8
