@@ -50,7 +50,7 @@ function LogInPage() {
                 relatedTo: ['shortSession'],
             },
             shortSession: {
-                ifChecked: false,
+                ifChecked: true,
                 ifTitle: false,
                 relatedTo: ['longerSession'],
             },
