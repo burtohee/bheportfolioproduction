@@ -63,26 +63,38 @@ jobs:
                   username: ${{ secrets.VPS_USER }}
                   key: ${{ secrets.VPS_SSH_KEY }}
                   script: |
-                      # Move to working directory
+                      # Move to app directory
                       cd ~/apps/reactapp
 
-                      # Copy stored .env.production into place
+                      # Copy your stored .env.production into place
                       cp ~/reactapp-deploy-secrets/.env.production .env.production
 
-                      # Install Node.js using nvm (recommended way)
-                      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+                      # Install or update nvm
                       export NVM_DIR="$HOME/.nvm"
+                      if [ ! -d "$NVM_DIR" ]; then
+                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+                      fi
                       source "$NVM_DIR/nvm.sh"
-                      nvm install 20
-                      nvm use 20
 
-                      # Install deps and build
+                      # Install and use latest Node.js (auto includes npm)
+                      nvm install node --reinstall-packages-from=node
+                      nvm use node
+
+                      # Confirm versions (debugging)
+                      node -v
+                      npm -v
+
+                      # Install dependencies and build
                       npm ci
-                      npm run build
+                      NODE_OPTIONS="--max-old-space-size=4096" npm run build npm run build
 
                       # Deploy to nginx directory
                       sudo rm -rf /var/www/html/*
                       sudo cp -r dist/* /var/www/html/
+
+                      # clean up app directory
+                      echo "Wiping ~/apps/reactapp completely after deploy..."
+                      sudo rm -rf ~/apps/reactapp/*
 
             - name: Reload Nginx (optional)
               uses: appleboy/ssh-action@v0.1.8
