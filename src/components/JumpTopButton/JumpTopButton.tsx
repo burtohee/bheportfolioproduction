@@ -44,17 +44,20 @@ function JumpTopButton() {
                     <button className={styles.jumpTopButton}>
                         {/* <MdUpgrade /> */}
                         <svg
-                            stroke="currentColor"
-                            fill="currentColor"
+                            stroke="black"
+                            fill="black"
                             strokeWidth="0"
                             viewBox="0 0 24 24"
                             height="1em"
                             width="1em"
                             xmlns="http://www.w3.org/2000/svg"
                         >
-                            <path fill="none" d="M0 0h24v24H0z"></path>
                             <path d="M16 18v2H8v-2h8zM11 7.99V16h2V7.99h3L12 4 8 7.99h3z"></path>
                         </svg>
+                        <img
+                            src="../../../src/assets/originals/icons/goup.svg"
+                            alt="goupicon"
+                        ></img>
                     </button>
                 </div>
             </section>
