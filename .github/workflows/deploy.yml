@@ -28,7 +28,8 @@ jobs:
               run: npm ci
 
             - name: Build Vite app
-              run: npm run build # Vite builds into `dist/`
+              # run: npm run build # Vite builds into `dist/`
+              run: npm run build -- --mode production # The -- passes the extra flag to the npm script. This tells Vite to explicitly load .env.production.
 
             - name: Upload source code to VPS
               uses: appleboy/scp-action@v0.1.7
