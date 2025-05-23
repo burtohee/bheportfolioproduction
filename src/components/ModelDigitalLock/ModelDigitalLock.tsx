@@ -17,7 +17,7 @@ const DigitalLock3D: React.FC<DigitalLock3DPros> = ReactLazyLoadImport(
     () => import('@/components/ModelDigitalLock/DigitalLock3D')
 );
 
-import { isDeviceIPad } from '@/utils/CheckDevices/checkUserDevices';
+import { getDeviceType } from '@/utils/CheckDevices/checkUserDevices';
 
 // import { ModelDigitalLockPasswordInputPros } from '@/entities/ModelDigitalLockPasswordInputPros';
 // const ModelDigitalLockPasswordInput: React.FC<ModelDigitalLockPasswordInputPros> =
@@ -67,10 +67,10 @@ const ModelDigitalLock = (pros: ModelDigitalLockPros) => {
         pros.setInputs((values) => ({ ...values, password: value }));
     };
 
-    const [isIPadUser, setIsIPadUser] = useState(false);
+    const [deviceType, setDeviceType] = useState('desktop');
 
     useEffect(() => {
-        setIsIPadUser(isDeviceIPad);
+        setDeviceType(getDeviceType);
     }, []);
 
     useEffect(() => {
@@ -213,8 +213,12 @@ const ModelDigitalLock = (pros: ModelDigitalLockPros) => {
 
                                 {/* OrbitControls to allow the user to rotate the view */}
                                 <OrbitControls
-                                    enableZoom={!isIPadUser}
-                                    enableRotate={!isIPadUser}
+                                    enableZoom={
+                                        deviceType === 'desktop' ? true : false
+                                    }
+                                    enableRotate={
+                                        deviceType === 'desktop' ? true : false
+                                    }
                                     enablePan={false}
                                     position0={camerLocation}
                                 />
