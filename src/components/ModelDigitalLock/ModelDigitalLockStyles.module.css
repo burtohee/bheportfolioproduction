@@ -20,14 +20,6 @@
     background-color: var(--background--color);
 }
 
-.controls3DModelContainer {
-    /* background-color: #292d39; */
-    background-color: rgba(34, 34, 34, 0.8);
-    width: 280px;
-    border-radius: 5px;
-    position: sticky;
-    top: 10px;
-}
 .control3DModelHeaderContainer {
     height: 39px;
     display: flex;
@@ -77,7 +69,9 @@
     opacity: 0;
     height: 0px;
     overflow: hidden; /* Prevents content from being visible */
-    transition: height 0.2s ease-in-out, opacity 0.5s ease-in-out;
+    transition:
+        height 0.2s ease-in-out,
+        opacity 0.5s ease-in-out;
 }
 
 .control3DModelValuesContainerExpanded {
@@ -85,7 +79,9 @@
     opacity: 1;
     height: 68px;
     /* background-color: rgba(34, 34, 34, 0.8); */
-    transition: height 1s ease-in-out, opacity 0.5s ease-in-out;
+    transition:
+        height 1s ease-in-out,
+        opacity 0.5s ease-in-out;
 }
 
 .control3DModelValuesPasswordContainer {
