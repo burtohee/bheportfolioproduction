@@ -13,16 +13,25 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v3
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v3
+            # - name: Set up Node.js
+            #   uses: actions/setup-node@v3
+            #   with:
+            #       node-version: 20
+
+            # - name: Install dependencies
+            #   run: npm ci
+
+            # - name: Build Vite app
+            #   run: npm run build # Vite builds into `dist/`
+
+            - name: Upload source code to VPS
+              uses: appleboy/scp-action@v0.1.7
               with:
-                  node-version: 20
-
-            - name: Install dependencies
-              run: npm ci
-
-            - name: Build Vite app
-              run: npm run build # Vite builds into `dist/`
+                  host: ${{ secrets.VPS_HOST }}
+                  username: ${{ secrets.VPS_USER }}
+                  key: ${{ secrets.VPS_SSH_KEY }}
+                  source: '.'
+                  target: '/home/${{ secrets.VPS_USER }}/apps/reactapp'
 
             - name: Prepare VPS directory
               uses: appleboy/ssh-action@v0.1.8
@@ -35,18 +44,42 @@ jobs:
                       sudo mkdir -p /var/www/html
                       sudo chown $USER:$USER /var/www/html
 
-            - name: Upload dist folder via SCP
-              uses: appleboy/scp-action@v0.1.7
+            # - name: Upload dist folder via SCP
+            #   uses: appleboy/scp-action@v0.1.7
+            #   with:
+            #       host: ${{ secrets.VPS_HOST }}
+            #       username: ${{ secrets.VPS_USER }}
+            #       key: ${{ secrets.VPS_SSH_KEY }}
+            #       # // dist/* will miss nested folders and dotfiles
+            #       # source: 'dist/*'
+            #       source: 'dist/.'
+            #       # 'dist/.' tells SCP to upload everything inside the dist folder (including dotfiles, nested folders, etc.) but not the dist directory itself.
+            #       target: '/var/www/html'
+            #       strip_components: 1
+            - name: SSH to VPS and build
+              uses: appleboy/ssh-action@v0.1.8
               with:
                   host: ${{ secrets.VPS_HOST }}
                   username: ${{ secrets.VPS_USER }}
                   key: ${{ secrets.VPS_SSH_KEY }}
-                  # // dist/* will miss nested folders and dotfiles
-                  # source: 'dist/*'
-                  source: 'dist/.'
-                  # 'dist/.' tells SCP to upload everything inside the dist folder (including dotfiles, nested folders, etc.) but not the dist directory itself.
-                  target: '/var/www/html'
-                  strip_components: 1
+                  script: |
+                      # Move to working directory
+                      cd ~/apps/reactapp
+
+                      # Copy stored .env.production into place
+                      cp ~/reactapp-deploy-secrets/.env.production .env.production
+
+                      # Set up Node.js if not already available
+                      curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+                      sudo apt-get install -y nodejs
+
+                      # Install deps and build
+                      npm ci
+                      npm run build
+
+                      # Deploy to nginx directory
+                      sudo rm -rf /var/www/html/*
+                      sudo cp -r dist/* /var/www/html/
 
             - name: Reload Nginx (optional)
               uses: appleboy/ssh-action@v0.1.8
