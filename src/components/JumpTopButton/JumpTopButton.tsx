@@ -43,7 +43,7 @@ function JumpTopButton() {
                 >
                     <button className={styles.jumpTopButton}>
                         {/* <MdUpgrade /> */}
-                        <svg
+                        {/* <svg
                             className={styles.jumpTopButtonSVGICON}
                             stroke="none"
                             fill="none"
@@ -57,6 +57,16 @@ function JumpTopButton() {
                         >
                             <path fill="none" d="M0 0h24v24H0z" />
                             <path d="M16 18v2H8v-2h8zM11 7.99V16h2V7.99h3L12 4 8 7.99h3z" />
+                        </svg> */}
+                        <svg
+                            width="2rem"
+                            height="2rem"
+                            viewBox="0 0 24 24"
+                            data-name="Flat Color"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                        >
+                            <path d="m19.71 9.29-7-7a1 1 0 0 0-1.42 0l-7 7a1 1 0 0 0 1.42 1.42L11 5.41V21a1 1 0 0 0 2 0V5.41l5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42" />
                         </svg>
                     </button>
                 </div>
