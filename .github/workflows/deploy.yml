@@ -86,7 +86,7 @@ jobs:
 
                       # Install dependencies and build
                       npm ci
-                      NODE_OPTIONS="--max-old-space-size=4096" npm run build npm run build
+                      NODE_OPTIONS="--max-old-space-size=384" npm run build
 
                       # Deploy to nginx directory
                       sudo rm -rf /var/www/html/*
