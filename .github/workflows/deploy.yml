@@ -13,16 +13,19 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v3
 
-            # - name: Set up Node.js
-            #   uses: actions/setup-node@v3
-            #   with:
-            #       node-version: 20
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
 
-            # - name: Install dependencies
-            #   run: npm ci
+            - name: Write env file
+              run: echo "${{ secrets.ENV_PRODUCTION }}" > .env.production
 
-            # - name: Build Vite app
-            #   run: npm run build # Vite builds into `dist/`
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build Vite app
+              run: npm run build # Vite builds into `dist/`
 
             - name: Upload source code to VPS
               uses: appleboy/scp-action@v0.1.7
@@ -44,57 +47,58 @@ jobs:
                       sudo mkdir -p /var/www/html
                       sudo chown $USER:$USER /var/www/html
 
-            # - name: Upload dist folder via SCP
-            #   uses: appleboy/scp-action@v0.1.7
-            #   with:
-            #       host: ${{ secrets.VPS_HOST }}
-            #       username: ${{ secrets.VPS_USER }}
-            #       key: ${{ secrets.VPS_SSH_KEY }}
-            #       # // dist/* will miss nested folders and dotfiles
-            #       # source: 'dist/*'
-            #       source: 'dist/.'
-            #       # 'dist/.' tells SCP to upload everything inside the dist folder (including dotfiles, nested folders, etc.) but not the dist directory itself.
-            #       target: '/var/www/html'
-            #       strip_components: 1
-            - name: SSH to VPS and build
-              uses: appleboy/ssh-action@v0.1.8
+            - name: Upload dist folder via SCP
+              uses: appleboy/scp-action@v0.1.7
               with:
                   host: ${{ secrets.VPS_HOST }}
                   username: ${{ secrets.VPS_USER }}
                   key: ${{ secrets.VPS_SSH_KEY }}
-                  script: |
-                      # Move to app directory
-                      cd ~/apps/reactapp
+                  # // dist/* will miss nested folders and dotfiles
+                  # source: 'dist/*'
+                  source: 'dist/.'
+                  # 'dist/.' tells SCP to upload everything inside the dist folder (including dotfiles, nested folders, etc.) but not the dist directory itself.
+                  target: '/var/www/html'
+                  strip_components: 1
 
-                      # Copy your stored .env.production into place
-                      cp ~/reactapp-deploy-secrets/.env.production .env.production
+            # - name: SSH to VPS and build
+            #   uses: appleboy/ssh-action@v0.1.8
+            #   with:
+            #       host: ${{ secrets.VPS_HOST }}
+            #       username: ${{ secrets.VPS_USER }}
+            #       key: ${{ secrets.VPS_SSH_KEY }}
+            #       script: |
+            #           # Move to app directory
+            #           cd ~/apps/reactapp
 
-                      # Install or update nvm
-                      export NVM_DIR="$HOME/.nvm"
-                      if [ ! -d "$NVM_DIR" ]; then
-                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-                      fi
-                      source "$NVM_DIR/nvm.sh"
+            #           # Copy your stored .env.production into place
+            #           cp ~/reactapp-deploy-secrets/.env.production .env.production
 
-                      # Install and use latest Node.js (auto includes npm)
-                      nvm install node --reinstall-packages-from=node
-                      nvm use node
+            #           # Install or update nvm
+            #           export NVM_DIR="$HOME/.nvm"
+            #           if [ ! -d "$NVM_DIR" ]; then
+            #             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+            #           fi
+            #           source "$NVM_DIR/nvm.sh"
 
-                      # Confirm versions (debugging)
-                      node -v
-                      npm -v
+            #           # Install and use latest Node.js (auto includes npm)
+            #           nvm install node --reinstall-packages-from=node
+            #           nvm use node
 
-                      # Install dependencies and build
-                      npm ci
-                      NODE_OPTIONS="--max-old-space-size=384" npm run build
+            #           # Confirm versions (debugging)
+            #           node -v
+            #           npm -v
 
-                      # Deploy to nginx directory
-                      sudo rm -rf /var/www/html/*
-                      sudo cp -r dist/* /var/www/html/
+            #           # Install dependencies and build
+            #           npm ci
+            #           NODE_OPTIONS="--max-old-space-size=384" npm run build
 
-                      # clean up app directory
-                      echo "Wiping ~/apps/reactapp completely after deploy..."
-                      sudo rm -rf ~/apps/reactapp/*
+            #           # Deploy to nginx directory
+            #           sudo rm -rf /var/www/html/*
+            #           sudo cp -r dist/* /var/www/html/
+
+            #           # clean up app directory
+            #           echo "Wiping ~/apps/reactapp completely after deploy..."
+            #           sudo rm -rf ~/apps/reactapp/*
 
             - name: Reload Nginx (optional)
               uses: appleboy/ssh-action@v0.1.8
