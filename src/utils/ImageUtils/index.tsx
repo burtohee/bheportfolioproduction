@@ -29,3 +29,6 @@ import freshburger from '../../assets/originals/images/fresh-burger.png';
 import viberr from '../../assets/originals/images/viberr.png';
 export const freshburgerPNG = freshburger;
 export const viberrPNG = viberr;
+
+import goupIcon from '../../assets/originals/icons/goup.svg';
+export const goupSVG = goupIcon;

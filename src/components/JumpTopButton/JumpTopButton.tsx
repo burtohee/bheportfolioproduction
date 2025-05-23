@@ -2,6 +2,8 @@ import styles from '@/components/JumpTopButton/JumpTopButtonStyles.module.css';
 import { useEffect, useState } from 'react';
 // import { MdUpgrade } from "react-icons/md";
 
+import { goupSVG } from '@/utils/ImageUtils';
+
 function JumpTopButton() {
     const [showJumpToTopButton, setshowJumpToTopButton] = useState(false);
 
@@ -43,7 +45,7 @@ function JumpTopButton() {
                 >
                     <button className={styles.jumpTopButton}>
                         {/* <MdUpgrade /> */}
-                        <svg
+                        {/* <svg
                             stroke="black"
                             fill="black"
                             strokeWidth="0"
@@ -53,11 +55,8 @@ function JumpTopButton() {
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <path d="M16 18v2H8v-2h8zM11 7.99V16h2V7.99h3L12 4 8 7.99h3z"></path>
-                        </svg>
-                        {/* <img
-                            src="../../../src/assets/originals/icons/goup.svg"
-                            alt="goupicon"
-                        ></img> */}
+                        </svg> */}
+                        <img src={goupSVG} alt="goupicon"></img>
                     </button>
                 </div>
             </section>
