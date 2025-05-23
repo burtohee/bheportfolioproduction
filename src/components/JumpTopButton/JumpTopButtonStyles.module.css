@@ -26,8 +26,10 @@
     }
 }
 
-.jumpTopButtonSVGIcon {
-    fill: var(--btn-text-color);
+.jumpTopButton {
+    svg {
+        fill: var(--btn-text-color);
+    }
 }
 
 .jumpTopButtonContainer {

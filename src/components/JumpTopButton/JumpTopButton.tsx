@@ -47,7 +47,6 @@ function JumpTopButton() {
                         {/* <MdUpgrade /> */}
                         {/* <img src={goupSVG} alt="goupicon"></img> */}
                         <svg
-                            className={styles.jumpTopButtonSVGIcon}
                             stroke="black"
                             fill="black"
                             strokeWidth="0"
