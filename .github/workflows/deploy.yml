@@ -19,7 +19,7 @@ jobs:
                   node-version: 20
 
             - name: Write env file
-              run: echo "${{ secrets.ENV_PROD_BASE64 }}" | base64 -d > .env.production
+              run: echo "${{ secrets.VITE_FORMSPREE_APIKEY }}" | base64 -d > .env.production
 
             - name: Debug env
               run: cat .env.production
