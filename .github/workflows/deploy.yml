@@ -18,8 +18,8 @@ jobs:
               with:
                   node-version: 20
 
-            - name: Write env file
-              run: echo "${{ secrets.VITE_FORMSPREE_APIKEY }}"  > .env
+            - name: Write .env.production
+              run: echo "VITE_FORMSPREE_APIKEY=${{ secrets.VITE_FORMSPREE_APIKEY }}" > .env.production
 
             - name: Debug env
               run: cat .env
