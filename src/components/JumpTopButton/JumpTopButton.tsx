@@ -1,7 +1,7 @@
 import styles from '@/components/JumpTopButton/JumpTopButtonStyles.module.css';
 import { useEffect, useState } from 'react';
 import { MdUpgrade } from 'react-icons/md';
-import { goupSVG } from '@/utils/ImageUtils';
+// import { goupSVG } from '@/utils/ImageUtils';
 
 function JumpTopButton() {
     const [showJumpToTopButton, setshowJumpToTopButton] = useState(false);
