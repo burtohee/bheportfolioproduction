@@ -35,7 +35,6 @@ function ContactMainPage() {
             '@/routesapi/FormSpree/index.tsx'
         );
         submitForSpreeForm(requestObj).then((r: any) => {
-            console.log(r);
             if (r.states === 200) {
                 setSuccess(true);
                 setMessage('Request Send Successfully');
