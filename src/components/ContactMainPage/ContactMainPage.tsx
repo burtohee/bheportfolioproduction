@@ -33,7 +33,7 @@ function ContactMainPage() {
             '@/routesapi/FormSpree/index.tsx'
         );
         submitForSpreeForm(requestObj).then((r: { response: any }) => {
-            console.log(r.response);
+            console.log(r);
             if (r.response) {
                 setSuccess(true);
 
