@@ -69,9 +69,12 @@ jobs:
                       # Copy stored .env.production into place
                       cp ~/reactapp-deploy-secrets/.env.production .env.production
 
-                      # Set up Node.js if not already available
-                      curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-                      sudo apt-get install -y nodejs
+                      # Install Node.js using nvm (recommended way)
+                      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+                      export NVM_DIR="$HOME/.nvm"
+                      source "$NVM_DIR/nvm.sh"
+                      nvm install 20
+                      nvm use 20
 
                       # Install deps and build
                       npm ci
