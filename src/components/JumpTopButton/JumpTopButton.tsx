@@ -45,9 +45,9 @@ function JumpTopButton() {
                         {/* <MdUpgrade /> */}
                         <svg
                             className={styles.jumpTopButtonSVGICON}
-                            stroke="currentColor"
+                            stroke="none"
                             fill="none"
-                            strokeWidth="2"
+                            strokeWidth="1"
                             viewBox="0 0 24 24"
                             strokeLinecap="round"
                             strokeLinejoin="round"
