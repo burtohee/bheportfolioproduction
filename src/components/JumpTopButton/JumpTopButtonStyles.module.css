@@ -26,11 +26,11 @@
     }
 }
 
-.jumpTopButton {
+/* .jumpTopButton {
     svg {
         fill: var(--btn-text-color);
     }
-}
+} */
 
 .jumpTopButtonContainer {
 }
