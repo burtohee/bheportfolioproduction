@@ -20,6 +20,8 @@ function ContactMainPage() {
     const [success, setSuccess] = useState(false);
     const formSpreeFormAPI = import.meta.env.VITE_FORMSPREE_APIKEY;
 
+    const [message, setMessage] = useState('');
+
     const onSubmit = methods.handleSubmit(async (data) => {
         const requestObj = {
             url: `https://formspree.io/f/${formSpreeFormAPI}`,
@@ -32,11 +34,17 @@ function ContactMainPage() {
         const { submitForSpreeForm } = await import(
             '@/routesapi/FormSpree/index.tsx'
         );
-        submitForSpreeForm(requestObj).then((r: { response: any }) => {
+        submitForSpreeForm(requestObj).then((r: any) => {
             console.log(r);
-            if (r.response) {
+            if (r.states === 200) {
                 setSuccess(true);
-
+                setMessage('Request Send Successfully');
+                setTimeout(() => {
+                    setSuccess(false);
+                }, 5000);
+            } else {
+                setSuccess(true);
+                setMessage(r.response);
                 setTimeout(() => {
                     setSuccess(false);
                 }, 5000);
@@ -90,7 +98,7 @@ function ContactMainPage() {
                         </button>
                     </form>
                     <div className={styles.contactMainPageMessageContainer}>
-                        {success && <p>Request Send Successfully </p>}
+                        {success && <p>{message} </p>}
                     </div>
                 </section>
             </FormProvider>
