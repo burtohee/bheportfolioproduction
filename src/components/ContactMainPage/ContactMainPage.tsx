@@ -18,7 +18,7 @@ const InputHomePage = ReactLazyLoadImport(
 function ContactMainPage() {
     const methods = useForm({ mode: 'all' });
     const [success, setSuccess] = useState(false);
-    const formSpreeFormAPI = import.meta.env.VITE_API_URL;
+    const formSpreeFormAPI = import.meta.env.VITE_FORMSPREE_APIKEY;
 
     const onSubmit = methods.handleSubmit(async (data) => {
         const requestObj = {
