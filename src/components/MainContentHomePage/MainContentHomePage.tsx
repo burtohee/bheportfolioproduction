@@ -322,21 +322,32 @@ function MainContentHomePage() {
                     <h2>Full Stack Developer</h2>
 
                     <span className="iconContainer">
-                        <a href="https://twitter.com" target="_blank">
+                        {/* <a href="https://twitter.com" target="_blank">
                             <img
                                 src={twitterthemeIcon}
                                 alt="Twitter icon"
                             ></img>
+                        </a> */}
+
+                        <a
+                            href="https://github.com/burtohee"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src={githubthemeIcon}
+                                alt="GitHub profile of Burtohee"
+                            ></img>
                         </a>
 
-                        <a href="https://github.com" target="_blank">
-                            <img src={githubthemeIcon} alt="github icon"></img>
-                        </a>
-
-                        <a href="https://linkedin.com" target="_blank">
+                        <a
+                            href="https://www.linkedin.com/in/bthe/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <img
                                 src={linkedinthemeIcon}
-                                alt="linkedin icon"
+                                alt="Linkedin profile of Burtohee"
                             ></img>
                         </a>
                     </span>
