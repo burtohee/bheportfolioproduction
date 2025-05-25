@@ -4,8 +4,8 @@ import {
     heroImg,
     // sunSVGIcon,
     // moonSVGIcon,
-    twitterLightSVGIcon,
-    twitterDarkSVGIcon,
+    // twitterLightSVGIcon,
+    // twitterDarkSVGIcon,
     githubLightSVGIcon,
     githubDarkSVGIcon,
     linkedinLightSVGIcon,
@@ -36,8 +36,8 @@ import cn from 'classnames';
 function MainContentHomePage() {
     const { theme, toggleTheme } = useThemeContext();
     //   const themeIcon = theme === "light" ? sunSVGIcon : moonSVGIcon;
-    const twitterthemeIcon =
-        theme === 'light' ? twitterLightSVGIcon : twitterDarkSVGIcon;
+    // const twitterthemeIcon =
+    //     theme === 'light' ? twitterLightSVGIcon : twitterDarkSVGIcon;
     const githubthemeIcon =
         theme === 'light' ? githubLightSVGIcon : githubDarkSVGIcon;
     const linkedinthemeIcon =
