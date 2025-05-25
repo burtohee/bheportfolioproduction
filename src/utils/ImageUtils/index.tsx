@@ -32,3 +32,6 @@ export const viberrPNG = viberr;
 
 import goupIcon from '../../assets/originals/icons/goup.png';
 export const goupPNG = goupIcon;
+
+import rocketIcon from '../../assets/originals/icons/rocketicon.png';
+export const rocketIconPNG = rocketIcon;

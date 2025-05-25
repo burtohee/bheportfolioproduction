@@ -3,6 +3,8 @@ import styles from './NavLinkStyles.module.css';
 import BHETLogo from '@/assets/originals/logos/BHETLogo.png';
 import { NavLinkValue } from '@/entities/Layout/NavLinkDataType';
 
+import { rocketIconPNG } from '@/utils/ImageUtils';
+
 interface NavLinkPros {
     data: NavLinkValue[];
 }
@@ -55,7 +57,21 @@ const NavLink = ({ data }: NavLinkPros) => {
                     </nav>
 
                     <div className={styles.headerButtonsContainer}>
-                        <button>Nothing</button>
+                        <button className={styles.headerButtons}>
+                            <a
+                                className={styles.headerButtonsAtag}
+                                href="https://backend.burtohe.ip-ddns.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    className={styles.headerButtonsRocketImage}
+                                    src={rocketIconPNG}
+                                    alt="Try SSR"
+                                ></img>
+                                TRY SSR
+                            </a>
+                        </button>
                     </div>
                 </header>
             </div>

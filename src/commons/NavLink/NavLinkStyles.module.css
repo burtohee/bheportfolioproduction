@@ -1,187 +1,210 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 .NavLinkheaderParentContainer {
-  li,
-  a,
-  button {
-    font-family: "Montserrat";
-    color: var(--btn-text-color);
-  }
+    li,
+    a,
+    .headerButtons {
+        font-family: 'Montserrat';
+        color: var(--btn-text-color);
+    }
 }
 
 .NavLinkheaderParentContainer {
-  background-color: var(--header-background-color);
+    background-color: var(--header-background-color);
 }
 
 .NavLinkheaderParentContainer {
-  .brandImageAtag {
-    text-decoration: none;
-  }
-  .brandImage {
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -webkit-tap-highlight-color: transparent;
-  }
+    .brandImageAtag {
+        text-decoration: none;
+    }
+    .brandImage {
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
 }
 
 .headerContainer {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .headerBrandContainer {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 .brandImage {
-  width: 50px;
+    width: 50px;
 }
 
 .navLinkContainer {
 }
 
 .navLinks {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 
-  li {
-    display: inline-block;
-    padding: 0px 20px;
-  }
-  .navLinksEmpty {
-    padding: 0px;
-  }
-  .navLinksEmptyAtag {
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    cursor: auto;
-  }
+    li {
+        display: inline-block;
+        padding: 0px 20px;
+    }
+    .navLinksEmpty {
+        padding: 0px;
+    }
+    .navLinksEmptyAtag {
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        cursor: auto;
+    }
 
-  .navLinksDisabled {
-    pointer-events: none;
-    color: gray;
-    opacity: 0.6;
-    text-decoration: none;
-  }
+    .navLinksDisabled {
+        pointer-events: none;
+        color: gray;
+        opacity: 0.6;
+        text-decoration: none;
+    }
 
-  .navLinksDisabled {
-    color: gray;
-  }
+    .navLinksDisabled {
+        color: gray;
+    }
 
-  .navLinksLi {
-    color: #000;
-  }
-  .navLinksA {
-    transition: all 0.3s ease 0s;
-  }
+    .navLinksLi {
+        color: #000;
+    }
+    .navLinksA {
+        transition: all 0.3s ease 0s;
+    }
 
-  .navLinksA:hover {
-    color: #0088a9;
-  }
+    .navLinksA:hover {
+        color: #0088a9;
+    }
 }
 
 .headerButtonsContainer {
-  /* background-color: rgb(43, 255, 0); */
+    /* background-color: rgb(43, 255, 0); */
 
-  button {
-    background-color: var(--btn-color);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-  }
+    .headerButtons {
+        width: 116px;
+        height: 38px;
+        background-color: var(--btn-color);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+    .headerButtonsAtag {
+        display: flex;
+        align-items: center;
+    }
 
-  button:hover {
-    background-color: var(--btn-hover-color);
-  }
+    .headerButtons:hover {
+        background-color: var(--btn-hover-color);
+    }
+}
+
+.headerButtonsRocketImage {
+    transition: transform 0.3s ease;
+}
+
+/* On button hover, move image up and right (45°) */
+.headerButtons:hover .headerButtonsRocketImage {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    transform: translate(20px, -30px);
+}
+
+.headerButtons:hover .headerButtonsAtag {
+    position: relative;
+    display: inline-block;
 }
 
 @media (width < 800px) {
-  .headerContainer {
-    justify-content: flex-end;
-    margin: 0 5px;
-  }
-
-  .headerBrandContainer {
-    margin-left: auto;
-    margin-right: 5px;
-
-    order: 3;
-  }
-
-  .headerButtonsContainer {
-    order: 2;
-    margin: 0 10px;
-  }
-
-  .navLinkContainer {
-    /* background-color: yellow; */
-    order: 1;
-  }
-  .navLinks {
-    li:nth-child(1) {
-      padding: 0px 20px 0 0;
+    .headerContainer {
+        justify-content: flex-end;
+        margin: 0 5px;
     }
-  }
-  .NavLinkheaderParentContainer {
-    li,
-    a,
-    button {
-      font-weight: 500;
-      font-size: 16px;
+
+    .headerBrandContainer {
+        margin-left: auto;
+        margin-right: 5px;
+
+        order: 3;
     }
-  }
+
+    .headerButtonsContainer {
+        order: 2;
+        margin: 0 10px;
+    }
+
+    .navLinkContainer {
+        /* background-color: yellow; */
+        order: 1;
+    }
+    .navLinks {
+        li:nth-child(1) {
+            padding: 0px 20px 0 0;
+        }
+    }
+    .NavLinkheaderParentContainer {
+        li,
+        a,
+        .headerButtons {
+            font-weight: 500;
+            font-size: 16px;
+        }
+    }
 }
 
 @media (width >= 800px) {
-  .headerContainer {
-    justify-content: flex-end;
-    margin: 0 50px;
-  }
-
-  .headerBrandContainer {
-    margin-right: auto;
-    margin-left: 20px;
-  }
-
-  .headerButtonsContainer {
-    margin: 0 10px;
-  }
-  .NavLinkheaderParentContainer {
-    li,
-    a,
-    button {
-      font-weight: 500;
-      font-size: 17px;
+    .headerContainer {
+        justify-content: flex-end;
+        margin: 0 50px;
     }
-  }
+
+    .headerBrandContainer {
+        margin-right: auto;
+        margin-left: 20px;
+    }
+
+    .headerButtonsContainer {
+        margin: 0 10px;
+    }
+    .NavLinkheaderParentContainer {
+        li,
+        a,
+        .headerButtons {
+            font-weight: 500;
+            font-size: 17px;
+        }
+    }
 }
 
 @media (width >= 1400px) {
-  .headerContainer {
-    justify-content: space-between;
-    margin: 0 50px;
-  }
-
-  .headerBrandContainer {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .headerButtonsContainer {
-    margin: 0 10px;
-  }
-  .NavLinkheaderParentContainer {
-    li,
-    a,
-    button {
-      font-weight: 500;
-      font-size: 18px;
+    .headerContainer {
+        justify-content: space-between;
+        margin: 0 50px;
     }
-  }
+
+    .headerBrandContainer {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .headerButtonsContainer {
+        margin: 0 10px;
+    }
+    .NavLinkheaderParentContainer {
+        li,
+        a,
+        .headerButtons {
+            font-weight: 500;
+            font-size: 18px;
+        }
+    }
 }
