@@ -2,6 +2,7 @@ import { Outlet } from 'react-router';
 import styles from './PublicLayoutStyles.module.css';
 import NavLink from '@/commons/NavLink/index.tsx';
 import { NavLinkValue } from '@/entities/Layout/NavLinkDataType';
+import FooterHomePage from '@/components/FooterHomePage';
 
 type NavLinksValue = NavLinkValue[];
 
@@ -18,6 +19,8 @@ function PublicLayout() {
                 <NavLink data={navLinks} />
 
                 <Outlet />
+
+                <FooterHomePage></FooterHomePage>
             </div>
         </>
     );
