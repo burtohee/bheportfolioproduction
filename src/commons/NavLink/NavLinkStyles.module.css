@@ -89,7 +89,7 @@
     /* background-color: rgb(43, 255, 0); */
 
     .headerButtons {
-        width: 116px;
+        width: 125px;
         height: 38px;
         background-color: var(--btn-color);
         border: none;
